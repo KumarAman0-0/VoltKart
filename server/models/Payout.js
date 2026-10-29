@@ -43,4 +43,8 @@ const payoutSchema = new mongoose.Schema({
 payoutSchema.index({ sellRequest: 1 });
 payoutSchema.index({ seller: 1, createdAt: -1 });
 
-module.exports = mongoose.model('Payout', payoutSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('Payout', () => {
+  return mongoose.models.Payout || mongoose.model('Payout', payoutSchema);
+});

@@ -44,4 +44,8 @@ const sellerProfileSchema = new mongoose.Schema({
   consentTimestamp: Date,
 }, { timestamps: true });
 
-module.exports = mongoose.model('SellerProfile', sellerProfileSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('SellerProfile', () => {
+  return mongoose.models.SellerProfile || mongoose.model('SellerProfile', sellerProfileSchema);
+});

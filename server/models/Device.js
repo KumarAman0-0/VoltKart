@@ -106,4 +106,8 @@ const deviceSchema = new mongoose.Schema({
   qaApprovedAt: Date,
 }, { timestamps: true });
 
-module.exports = mongoose.model('Device', deviceSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('Device', () => {
+  return mongoose.models.Device || mongoose.model('Device', deviceSchema);
+});

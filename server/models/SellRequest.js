@@ -111,4 +111,8 @@ const sellRequestSchema = new mongoose.Schema({
   payoutTransactionId: String,
 }, { timestamps: true });
 
-module.exports = mongoose.model('SellRequest', sellRequestSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('SellRequest', () => {
+  return mongoose.models.SellRequest || mongoose.model('SellRequest', sellRequestSchema);
+});

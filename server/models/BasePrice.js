@@ -44,4 +44,8 @@ const basePriceSchema = new mongoose.Schema({
 basePriceSchema.index({ brand: 1, model: 1, storage: 1 }, { unique: true });
 basePriceSchema.index({ isActive: 1 });
 
-module.exports = mongoose.model('BasePrice', basePriceSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('BasePrice', () => {
+  return mongoose.models.BasePrice || mongoose.model('BasePrice', basePriceSchema);
+});

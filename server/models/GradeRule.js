@@ -31,4 +31,8 @@ const gradeRuleSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-module.exports = mongoose.model('GradeRule', gradeRuleSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('GradeRule', () => {
+  return mongoose.models.GradeRule || mongoose.model('GradeRule', gradeRuleSchema);
+});

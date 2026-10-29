@@ -109,4 +109,8 @@ inspectionSchema.index({ diagnosticCode: 1 });
 inspectionSchema.index({ sellRequest: 1 });
 inspectionSchema.index({ agent: 1, createdAt: -1 });
 
-module.exports = mongoose.model('Inspection', inspectionSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('Inspection', () => {
+  return mongoose.models.Inspection || mongoose.model('Inspection', inspectionSchema);
+});

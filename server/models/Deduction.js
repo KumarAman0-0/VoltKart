@@ -44,4 +44,8 @@ const deductionSchema = new mongoose.Schema({
 deductionSchema.index({ category: 1 });
 deductionSchema.index({ isActive: 1 });
 
-module.exports = mongoose.model('Deduction', deductionSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('Deduction', () => {
+  return mongoose.models.Deduction || mongoose.model('Deduction', deductionSchema);
+});

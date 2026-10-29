@@ -50,4 +50,8 @@ userSchema.methods.toJSON = function () {
   return obj;
 };
 
-module.exports = mongoose.model('User', userSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('User', () => {
+  return mongoose.models.User || mongoose.model('User', userSchema);
+});

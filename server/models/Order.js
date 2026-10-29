@@ -57,4 +57,8 @@ const orderSchema = new mongoose.Schema({
   invoiceNumber: String,
 }, { timestamps: true });
 
-module.exports = mongoose.model('Order', orderSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('Order', () => {
+  return mongoose.models.Order || mongoose.model('Order', orderSchema);
+});

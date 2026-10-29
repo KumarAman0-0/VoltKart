@@ -1,0 +1,241 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  passwordHash  String
+  role          String   @default("buyer")
+  isBlocked     Boolean  @default(false)
+  refreshTokens String[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model SellerProfile {
+  id               String    @id @default(uuid())
+  userId           String    @unique
+  phone            String    @default("")
+  address          Json?
+  idProof          String?
+  idProofType      String?
+  bankDetails      Json?
+  upiId            String?
+  isKycVerified    Boolean   @default(false)
+  consentGiven     Boolean   @default(false)
+  consentTimestamp DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model SellRequest {
+  id                    String    @id @default(uuid())
+  sellerId              String
+  model                 String
+  storage               String?
+  color                 String?
+  condition             String?
+  expectedPrice         Float
+  photos                String[]
+  description           String?
+  address               Json
+  pickupSlot            String?
+  pickupDate            DateTime?
+  estimatedMax          Float?
+  sellerRate            Float?
+  calculatedPrice       Float?
+  finalPrice            Float?
+  status                String    @default("submitted")
+  rejectionReason       String?
+  offeredPrice          Float?
+  sellerResponse        String    @default("pending")
+  agentId               String?
+  agentAssignedAt       DateTime?
+  handoverOtpVerifiedAt DateTime?
+  receivedAt            DateTime?
+  verifiedAt            DateTime?
+  paidAt                DateTime?
+  payoutAmount          Float?
+  payoutStatus          String    @default("pending")
+  payoutTransactionId   String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+}
+
+model Inspection {
+  id                    String    @id @default(uuid())
+  sellRequestId         String    @unique
+  agentId               String
+  imei                  String?
+  imei2                 String?
+  imeiMatched           Boolean   @default(false)
+  autoTests             Json?
+  manualChecks          Json?
+  photos                Json?
+  issues                Json?
+  priceBreakdown        Json?
+  basePrice             Float?
+  calculatedPrice       Float?
+  sellerRate            Float?
+  finalPrice            Float?
+  grade                 String?
+  diagnosticCode        String?
+  diagnosticExpiresAt   DateTime?
+  diagnosticSubmittedAt DateTime?
+  sellerOtpHash         String?
+  sellerAccepted        Boolean?
+  sellerDeclineReason   String?
+  priceMismatchAlert    Boolean   @default(false)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+}
+
+model Device {
+  id                 String    @id @default(uuid())
+  sellRequestId      String    @unique
+  imei               String    @unique
+  imei2              String?
+  model              String
+  storage            String?
+  color              String?
+  grade              String?
+  batteryHealth      Float?
+  inspection         Json?
+  inspectionNotes    String?
+  os                 String?
+  osVersion          String?
+  flashedById        String?
+  flashedAt          DateTime?
+  flashLog           Json?
+  status             String    @default("received")
+  sellingPrice       Float?
+  listingTitle       String?
+  listingDescription String?
+  photos             String[]
+  warrantyMonths     Int       @default(6)
+  accessories        String[]
+  receivedById       String?
+  receivedAt         DateTime?
+  qaApprovedById     String?
+  qaApprovedAt       DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model CounterOffer {
+  id            String    @id @default(uuid())
+  sellRequestId String
+  deviceId      String
+  sellerId      String
+  oldPrice      Float
+  newPrice      Float
+  reasons       Json?
+  engineerNotes String?
+  createdById   String
+  approvedById  String?
+  status        String    @default("pending_admin")
+  sentAt        DateTime?
+  respondedAt   DateTime?
+  expiresAt     DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Order {
+  id                 String    @id @default(uuid())
+  buyerId            String
+  deviceId           String
+  price              Float
+  address            Json
+  paymentId          String?
+  razorpayOrderId    String?
+  razorpaySignature  String?
+  paymentStatus      String    @default("pending")
+  status             String    @default("placed")
+  trackingNumber     String?
+  courierName        String?
+  estimatedDelivery  DateTime?
+  cancelReason       String?
+  returnReason       String?
+  invoiceUrl         String?
+  invoiceNumber      String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Payout {
+  id            String    @id @default(uuid())
+  sellRequestId String
+  sellerId      String
+  amount        Float
+  method        String    @default("upi")
+  payoutDetails Json?
+  status        String    @default("pending")
+  reference     String?
+  failureReason String?
+  paidAt        DateTime?
+  processedById String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model AuditLog {
+  id            String   @id @default(uuid())
+  actorId       String
+  actorRole     String?
+  action        String
+  targetModel   String?
+  targetId      String?
+  previousValue Json?
+  newValue      Json?
+  metadata      Json?
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model BasePrice {
+  id          String   @id @default(uuid())
+  brand       String
+  model       String
+  storage     String
+  basePrice   Float
+  minFloor    Float    @default(500)
+  isActive    Boolean  @default(true)
+  updatedById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Deduction {
+  id           String   @id @default(uuid())
+  issueCode    String   @unique
+  description  String
+  category     String
+  amount       Float    @default(0)
+  isPercentage Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  updatedById  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model GradeRule {
+  id          String   @id @default(uuid())
+  grade       String   @unique
+  label       String?
+  minScore    Float
+  maxScore    Float
+  description String?
+  updatedById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

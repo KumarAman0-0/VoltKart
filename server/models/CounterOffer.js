@@ -57,4 +57,8 @@ const counterOfferSchema = new mongoose.Schema({
 counterOfferSchema.index({ sellRequest: 1 });
 counterOfferSchema.index({ seller: 1, status: 1 });
 
-module.exports = mongoose.model('CounterOffer', counterOfferSchema);
+const { resolveModel } = require('../db/getModel');
+
+module.exports = resolveModel('CounterOffer', () => {
+  return mongoose.models.CounterOffer || mongoose.model('CounterOffer', counterOfferSchema);
+});
