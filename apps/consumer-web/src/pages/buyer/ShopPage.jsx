@@ -7,11 +7,10 @@ import Navbar from '../../components/common/Navbar';
 import Footer from '../../components/common/Footer';
 import {
   Search, Filter, Shield, Battery, Star, ShoppingCart,
-  ArrowRight, CheckCircle2, ChevronRight, Check, Heart
+  ArrowRight, CheckCircle2, ChevronRight, Check, Heart,
+  Smartphone, Lock, Cpu
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-
-const OS_ICONS = { GrapheneOS: '🔐', '/e/OS': '🌿', LineageOS: '🔄', CalyxOS: '🛡️' };
 const GRADE_LABELS = {
   'A+': 'Like New',
   'A': 'Like New',
@@ -96,10 +95,10 @@ const ShopPage = () => {
             </span>
             {[
               { id: '', label: 'All Editions' },
-              { id: 'Kids', label: '🧸 VoltKart Kids (5–12)' },
-              { id: 'Teen', label: '🎧 VoltKart Teen (13–17)' },
-              { id: 'Adult', label: '💼 VoltKart Adult' },
-              { id: 'Senior', label: '👓 VoltKart Senior' },
+              { id: 'Kids', label: 'VoltKart Kids (5–12)' },
+              { id: 'Teen', label: 'VoltKart Teen (13–17)' },
+              { id: 'Adult', label: 'VoltKart Adult' },
+              { id: 'Senior', label: 'VoltKart Senior' },
             ].map(ed => {
               const isActive = filters.edition === ed.id;
               return (
@@ -128,7 +127,9 @@ const ShopPage = () => {
           {/* 3D Hardware Teardown Cue */}
           <div style={{ marginTop: '1.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', padding: '0.85rem 1.25rem', background: 'var(--avrel-card-bg)', border: '1px solid var(--avrel-border)', borderRadius: '14px', boxShadow: '0 2px 8px rgba(18,20,23,0.03)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{ fontSize: '1.3rem' }}>🔬</span>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '8px', background: 'var(--avrel-bg)', border: '1px solid var(--avrel-border)' }}>
+                <Cpu size={18} color="var(--avrel-text)" />
+              </div>
               <div>
                 <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: '0.85rem', color: 'var(--avrel-text)' }}>
                   Interactive 3D Hardware Inspection
@@ -244,7 +245,7 @@ const ShopPage = () => {
           </div>
         ) : devices.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '6rem 2rem', background: 'var(--avrel-card-bg)', borderRadius: '20px', border: '1px solid var(--avrel-border)' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📱</div>
+            <Smartphone size={48} strokeWidth={1.5} color="var(--avrel-text-stone)" style={{ margin: '0 auto 1rem auto' }} />
             <h3 style={{ fontSize: '1.4rem', fontWeight: 800, margin: '0 0 0.5rem 0' }}>No matching devices in warehouse</h3>
             <p style={{ color: 'var(--avrel-text-muted)', fontSize: '0.95rem', margin: '0 0 1.5rem 0' }}>
               Try adjusting your model, grade, or OS filters to view available inventory.
@@ -276,8 +277,8 @@ const ShopPage = () => {
                         {device.photos?.[0] ? (
                           <img src={device.photos[0]} alt={device.model} className="product-card-image" />
                         ) : (
-                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem' }}>
-                            📱
+                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Smartphone size={40} strokeWidth={1.5} color="var(--avrel-text-stone)" />
                           </div>
                         )}
                       </Link>
@@ -341,12 +342,12 @@ const ShopPage = () => {
 
                       {/* Specs Row */}
                       <div className="product-card-specs" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
-                        <span style={{ fontFamily: 'DM Mono', fontSize: '0.68rem', color: '#b56c00', fontWeight: 700 }}>
-                          {OS_ICONS[device.os] || '🔐'} {device.os}
+                        <span style={{ fontFamily: 'DM Mono', fontSize: '0.68rem', color: '#b56c00', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                          <Lock size={10} /> {device.os}
                         </span>
                         {device.batteryHealth && (
-                          <span style={{ fontFamily: 'DM Mono', fontSize: '0.68rem', color: '#20bf6b', fontWeight: 600 }}>
-                            🔋 {device.batteryHealth}%
+                          <span style={{ fontFamily: 'DM Mono', fontSize: '0.68rem', color: '#20bf6b', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+                            <Battery size={11} /> {device.batteryHealth}%
                           </span>
                         )}
                         <span style={{ fontFamily: 'DM Mono', fontSize: '0.68rem', color: 'var(--avrel-text-stone)' }}>

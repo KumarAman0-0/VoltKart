@@ -3,14 +3,15 @@ import Navbar from '../../components/common/Navbar';
 import Footer from '../../components/common/Footer';
 import {
   Shield, Lock, Unlock, Clock, MapPin, Bell,
-  Check, X, Smartphone, Moon, BookOpen, AlertTriangle
+  Check, X, Smartphone, Moon, BookOpen, AlertTriangle,
+  Headphones, MessageSquare, Sparkles
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const INITIAL_REQUESTS = [
-  { id: 1, app: 'Duolingo (Language Learning)', icon: '🦉', category: 'Education', requester: 'Aarav (Kids Edition)', time: '12m ago' },
-  { id: 2, app: 'Spotify Music', icon: '🎵', category: 'Music & Audio', requester: 'Ananya (Teen Edition)', time: '1h ago' },
-  { id: 3, app: 'Discord', icon: '💬', category: 'Social / Gaming', requester: 'Ananya (Teen Edition)', time: '3h ago' },
+  { id: 1, app: 'Duolingo (Language Learning)', Icon: BookOpen, category: 'Education', requester: 'Aarav (Kids Edition)', time: '12m ago' },
+  { id: 2, app: 'Spotify Music', Icon: Headphones, category: 'Music & Audio', requester: 'Ananya (Teen Edition)', time: '1h ago' },
+  { id: 3, app: 'Discord', Icon: MessageSquare, category: 'Social / Gaming', requester: 'Ananya (Teen Edition)', time: '3h ago' },
 ];
 
 const GuardianDashboard = () => {
@@ -34,9 +35,9 @@ const GuardianDashboard = () => {
     const nextState = !deviceLocked;
     setDeviceLocked(nextState);
     if (nextState) {
-      toast('🔒 Child device locked remotely', { icon: '🛡️' });
+      toast.success('Child device locked remotely');
     } else {
-      toast.success('🔓 Child device unlocked');
+      toast.success('Child device unlocked');
     }
   };
 
@@ -87,8 +88,8 @@ const GuardianDashboard = () => {
             <div style={{ background: 'var(--avrel-card-bg)', border: '1px solid var(--avrel-border)', borderRadius: '20px', padding: '2rem', boxShadow: '0 4px 16px rgba(18, 20, 23, 0.04)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(0, 212, 170, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem' }}>
-                    🧸
+                  <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(0, 212, 170, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Sparkles size={20} color="#00d4aa" />
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.15rem', fontWeight: 800, margin: 0 }}>Aarav’s Pixel 6a</h3>
@@ -125,8 +126,8 @@ const GuardianDashboard = () => {
             <div style={{ background: 'var(--avrel-card-bg)', border: '1px solid var(--avrel-border)', borderRadius: '20px', padding: '2rem', boxShadow: '0 4px 16px rgba(18, 20, 23, 0.04)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(108, 99, 255, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem' }}>
-                    🎧
+                  <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(108, 99, 255, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Headphones size={20} color="#6c63ff" />
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.15rem', fontWeight: 800, margin: 0 }}>Ananya’s Pixel 7</h3>
@@ -194,7 +195,9 @@ const GuardianDashboard = () => {
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <span style={{ fontSize: '1.5rem' }}>{req.icon}</span>
+                        <div style={{ width: 36, height: 36, borderRadius: '8px', background: 'var(--avrel-card-bg)', border: '1px solid var(--avrel-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--avrel-text)' }}>
+                          <req.Icon size={18} />
+                        </div>
                         <div>
                           <strong style={{ fontSize: '0.9rem', color: 'var(--avrel-text)', display: 'block' }}>
                             {req.app}

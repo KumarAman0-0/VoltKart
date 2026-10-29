@@ -8,7 +8,7 @@ import Footer from '../../components/common/Footer';
 import {
   Shield, Battery, Award, CheckCircle2, ArrowLeft,
   Truck, Lock, Cpu, Sparkles, CreditCard, ChevronRight,
-  Check, Box, RefreshCw, AlertCircle
+  Check, Box, RefreshCw, AlertCircle, Headphones, Briefcase, Glasses, Smartphone
 } from 'lucide-react';
 
 const EDITIONS_OPTIONS = [
@@ -16,7 +16,7 @@ const EDITIONS_OPTIONS = [
     id: 'Kids',
     name: 'VoltKart Kids',
     age: 'Ages 5 to 12',
-    icon: '🧸',
+    Icon: Sparkles,
     summary: 'Parent-approved apps only, strict child-safe browsing, bedtime lock, whitelisted calling.',
     color: '#00d4aa',
   },
@@ -24,7 +24,7 @@ const EDITIONS_OPTIONS = [
     id: 'Teen',
     name: 'VoltKart Teen',
     age: 'Ages 13 to 17',
-    icon: '🎧',
+    Icon: Headphones,
     summary: 'Transparent guardrails, study focus mode, shared wellbeing reports, app install approval workflow.',
     color: '#6c63ff',
   },
@@ -32,7 +32,7 @@ const EDITIONS_OPTIONS = [
     id: 'Adult',
     name: 'VoltKart Adult',
     age: 'General / Work',
-    icon: '💼',
+    Icon: Briefcase,
     summary: 'Full app freedom, work and personal profiles, one-time permissions, network-level tracker blocking.',
     color: '#2ed573',
   },
@@ -40,7 +40,7 @@ const EDITIONS_OPTIONS = [
     id: 'Senior',
     name: 'VoltKart Senior',
     age: 'Parents & Grandparents',
-    icon: '👓',
+    Icon: Glasses,
     summary: 'Oversized high-contrast tiles, 1-tap family video call, dedicated SOS emergency button with GPS.',
     color: '#ffa502',
   },
@@ -131,7 +131,7 @@ const DeviceDetailPage = () => {
       });
 
       setStep('success');
-      toast.success('🎉 Order confirmed! Flashing & dispatch underway.');
+      toast.success('Order confirmed! Flashing & dispatch underway.');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Checkout failed');
     } finally {
@@ -188,15 +188,17 @@ const DeviceDetailPage = () => {
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               ) : (
-                <div style={{ fontSize: '5rem' }}>📱</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Smartphone size={80} strokeWidth={1.5} color="var(--avrel-text-stone)" />
+                </div>
               )}
 
               <div style={{ position: 'absolute', top: '1.25rem', left: '1.25rem', display: 'flex', gap: '0.5rem' }}>
                 <span style={{ fontFamily: 'DM Mono', fontSize: '0.72rem', fontWeight: 700, padding: '0.3rem 0.75rem', borderRadius: '9999px', background: 'var(--avrel-text)', color: '#ffffff' }}>
                   Grade: {gradeDetails.label}
                 </span>
-                <span style={{ fontFamily: 'DM Mono', fontSize: '0.72rem', fontWeight: 700, padding: '0.3rem 0.75rem', borderRadius: '9999px', background: '#e8f5e9', color: '#2e7d32', border: '1px solid #c8e6c9' }}>
-                  🔋 {device.batteryHealth || 95}% Battery
+                <span style={{ fontFamily: 'DM Mono', fontSize: '0.72rem', fontWeight: 700, padding: '0.3rem 0.75rem', borderRadius: '9999px', background: '#e8f5e9', color: '#2e7d32', border: '1px solid #c8e6c9', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <Battery size={13} /> {device.batteryHealth || 95}% Battery
                 </span>
               </div>
             </div>
@@ -293,7 +295,7 @@ const DeviceDetailPage = () => {
               Hardware inspected and wiped. Choose the operating system edition below before placing your order.
             </p>
 
-            {/* ⭐ SECTION 9: "Who will use this?" Edition Selector */}
+            {/* SECTION 9: "Who will use this?" Edition Selector */}
             <div style={{
               background: 'var(--avrel-card-bg)',
               border: '2px solid var(--avrel-text)',
@@ -334,7 +336,9 @@ const DeviceDetailPage = () => {
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: '1.4rem' }}>{ed.icon}</span>
+                        <div style={{ color: ed.color, display: 'flex', alignItems: 'center' }}>
+                          <ed.Icon size={24} />
+                        </div>
                         {isChosen && <Check size={16} color="var(--avrel-text)" />}
                       </div>
                       <div style={{ fontWeight: 800, fontSize: '0.92rem', color: 'var(--avrel-text)' }}>
@@ -370,8 +374,8 @@ const DeviceDetailPage = () => {
                 <div style={{ fontSize: '2.4rem', fontWeight: 900, color: 'var(--avrel-text)', lineHeight: 1 }}>
                   ₹{device.sellingPrice?.toLocaleString('en-IN')}
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#20bf6b', fontWeight: 600, marginTop: '0.3rem' }}>
-                  ✓ Includes {chosenEdition} OS flashing & shipping
+                <div style={{ fontSize: '0.78rem', color: '#20bf6b', fontWeight: 600, marginTop: '0.3rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <Check size={14} /> Includes {chosenEdition} OS flashing & shipping
                 </div>
               </div>
 
@@ -433,7 +437,7 @@ const DeviceDetailPage = () => {
               <form onSubmit={handleAddressSubmit}>
                 <div className="modal-header" style={{ borderBottom: '1px solid var(--avrel-border)' }}>
                   <h3 style={{ margin: 0, fontWeight: 900 }}>1. Delivery Address</h3>
-                  <button type="button" className="modal-close" onClick={() => setShowCheckout(false)}>✕</button>
+                  <button type="button" className="modal-close" onClick={() => setShowCheckout(false)}>×</button>
                 </div>
                 <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                   <div style={{ background: 'var(--avrel-bg)', padding: '0.75rem 1rem', borderRadius: '10px', fontSize: '0.85rem' }}>
@@ -477,7 +481,7 @@ const DeviceDetailPage = () => {
               <div>
                 <div className="modal-header" style={{ borderBottom: '1px solid var(--avrel-border)' }}>
                   <h3 style={{ margin: 0, fontWeight: 900 }}>2. Complete Payment</h3>
-                  <button type="button" className="modal-close" onClick={() => setShowCheckout(false)}>✕</button>
+                  <button type="button" className="modal-close" onClick={() => setShowCheckout(false)}>×</button>
                 </div>
                 <div className="modal-body">
                   <div style={{ background: 'var(--avrel-bg)', padding: '1rem', borderRadius: '12px', marginBottom: '1.25rem' }}>
@@ -510,7 +514,9 @@ const DeviceDetailPage = () => {
 
             {step === 'success' && (
               <div style={{ textAlign: 'center', padding: '3rem 2rem' }}>
-                <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🎉</div>
+                <div style={{ width: 64, height: 64, borderRadius: '50%', background: '#e8f9ef', color: '#2ed573', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem auto' }}>
+                  <CheckCircle2 size={36} />
+                </div>
                 <h2 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '0.5rem' }}>Order Placed!</h2>
                 <p style={{ color: 'var(--avrel-text-muted)', fontSize: '0.95rem', marginBottom: '2rem' }}>
                   Our warehouse engineers have received your order. Your device will be sanitized, flashed with <strong>{chosenEdition} Edition</strong>, and dispatched with tracking.

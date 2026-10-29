@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import { adminAPI } from '../../api';
 import toast from 'react-hot-toast';
-import { Plus, Trash2, Edit2, Save, X, AlertTriangle, TrendingDown, Tag, Award } from 'lucide-react';
+import { Plus, Trash2, Edit2, Save, X, AlertTriangle, TrendingDown, Tag, Award, CheckCircle } from 'lucide-react';
 
 const TABS = [
-  { id: 'base',       label: '📱 Base Prices',   icon: Tag },
-  { id: 'deductions', label: '📉 Deductions',     icon: TrendingDown },
-  { id: 'grades',     label: '🏆 Grade Rules',    icon: Award },
-  { id: 'alerts',     label: '🚨 Price Alerts',   icon: AlertTriangle },
+  { id: 'base',       label: 'Base Prices',   icon: Tag },
+  { id: 'deductions', label: 'Deductions',     icon: TrendingDown },
+  { id: 'grades',     label: 'Grade Rules',    icon: Award },
+  { id: 'alerts',     label: 'Price Alerts',   icon: AlertTriangle },
 ];
 
 const DEDUCTION_CATEGORIES = ['screen', 'body', 'battery', 'functional', 'locks', 'accessories'];
@@ -20,7 +20,7 @@ const Modal = ({ title, onClose, children }) => (
     <div className="modal" style={{ maxWidth: 500 }} onClick={e => e.stopPropagation()}>
       <div className="modal-header">
         <h2>{title}</h2>
-        <button className="btn-close" onClick={onClose}>✕</button>
+        <button className="btn-close" onClick={onClose}><X size={16} /></button>
       </div>
       <div className="modal-body">{children}</div>
     </div>
@@ -81,7 +81,7 @@ const BasePricesTab = () => {
       </div>
 
       <div className="alert alert-warning" style={{ marginBottom: '1rem' }}>
-        ⚠️ <strong>Important:</strong> Existing sell requests will NOT be affected. Only new inspections use updated prices.
+        <strong>Important:</strong> Existing sell requests will NOT be affected. Only new inspections use updated prices.
       </div>
 
       {loading ? <div className="page-loader"><div className="spinner" /></div> : (
@@ -422,7 +422,7 @@ const AlertsTab = () => {
 
       {loading ? <div className="page-loader"><div className="spinner" /></div> : alerts.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state-icon">✅</div>
+          <div className="empty-state-icon"><CheckCircle size={36} color="var(--volt-success)" /></div>
           <h3>No price mismatch alerts</h3>
           <p>All inspections are within acceptable range</p>
         </div>

@@ -72,7 +72,7 @@ const EngineerDashboard = () => {
     setSubmitting(true);
     try {
       const { data } = await engineerAPI.verifyDevice(verifyModal._id, verifyForm);
-      toast.success('Device verified! Seller payment disbursed. 🎉');
+      toast.success('Device verified! Seller payment disbursed.');
       setDevices(ds => ds.map(d => d._id === verifyModal._id ? data.data.device : d));
       setVerifyModal(null);
     } catch (err) {
@@ -167,7 +167,7 @@ const EngineerDashboard = () => {
     try {
       await engineerAPI.setPricing(pricingModal._id, pricingForm);
       const { data } = await engineerAPI.updateStatus(pricingModal._id, {});
-      toast.success('Device is now LIVE! 🎉');
+      toast.success('Device is now LIVE!');
       setDevices(ds => ds.map(d => d._id === pricingModal._id ? data.data : d));
       setPricingModal(null);
     } catch (err) {
@@ -282,11 +282,11 @@ const EngineerDashboard = () => {
           <div className="modal-overlay" onClick={() => setVerifyModal(null)}>
             <div className="modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 500 }}>
               <div className="modal-header">
-                <h2 className="modal-title">✓ Warehouse Verification</h2>
-                <button className="modal-close" onClick={() => setVerifyModal(null)}>✕</button>
+                <h2 className="modal-title">Warehouse Verification</h2>
+                <button className="modal-close" onClick={() => setVerifyModal(null)}>×</button>
               </div>
               <div className="alert alert-info" style={{ fontSize: '0.85rem', marginBottom: '1.25rem' }}>
-                <strong>⚡ Faisla 1 Compliance:</strong> Confirming warehouse verification initiates instant payment disbursement to the seller's verified UPI/Bank.
+                <strong>Faisla 1 Compliance:</strong> Confirming warehouse verification initiates instant payment disbursement to the seller's verified UPI/Bank.
               </div>
               <form onSubmit={handleVerifySubmit}>
                 <div style={{ marginBottom: '1rem', background: 'var(--bg-elevated)', padding: '0.85rem', borderRadius: '8px' }}>
@@ -335,11 +335,11 @@ const EngineerDashboard = () => {
           <div className="modal-overlay" onClick={() => setCounterModal(null)}>
             <div className="modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 560 }}>
               <div className="modal-header">
-                <h2 className="modal-title">⚠️ Report Defect & Counter-Offer</h2>
-                <button className="modal-close" onClick={() => setCounterModal(null)}>✕</button>
+                <h2 className="modal-title">Report Defect & Counter-Offer</h2>
+                <button className="modal-close" onClick={() => setCounterModal(null)}>×</button>
               </div>
               <div className="alert alert-warning" style={{ fontSize: '0.85rem', marginBottom: '1.25rem' }}>
-                <strong>⚡ Faisla 4 Compliance:</strong> Phone is NOT rejected immediately. Document the undisclosed defects. The system calculates a counter-offer for Admin approval and Seller acceptance.
+                <strong>Faisla 4 Compliance:</strong> Phone is NOT rejected immediately. Document the undisclosed defects. The system calculates a counter-offer for Admin approval and Seller acceptance.
               </div>
               <form onSubmit={handleCounterSubmit}>
                 <div className="form-group">
@@ -431,8 +431,8 @@ const EngineerDashboard = () => {
           <div className="modal-overlay" onClick={() => setFlashModal(null)}>
             <div className="modal" onClick={e => e.stopPropagation()}>
               <div className="modal-header">
-                <h2 className="modal-title">⚡ Flash OS: {flashModal.model}</h2>
-                <button className="modal-close" onClick={() => setFlashModal(null)}>✕</button>
+                <h2 className="modal-title">Flash OS: {flashModal.model}</h2>
+                <button className="modal-close" onClick={() => setFlashModal(null)}>×</button>
               </div>
               <div className="alert alert-warning">Device must be factory wiped before flashing.</div>
               <form onSubmit={handleFlash}>
@@ -456,7 +456,7 @@ const EngineerDashboard = () => {
                     value={flashForm.notes} onChange={e => setFlashForm(f => ({...f, notes: e.target.value}))} style={{ minHeight: 70 }} />
                 </div>
                 <button type="submit" className="btn btn-accent w-full" disabled={submitting}>
-                  {submitting ? <span className="spinner" /> : '⚡ Confirm OS Flash'}
+                  {submitting ? <span className="spinner" /> : 'Confirm OS Flash'}
                 </button>
               </form>
             </div>
@@ -468,8 +468,8 @@ const EngineerDashboard = () => {
           <div className="modal-overlay" onClick={() => setPricingModal(null)}>
             <div className="modal" onClick={e => e.stopPropagation()}>
               <div className="modal-header">
-                <h2 className="modal-title">🚀 Set Pricing — Go Live</h2>
-                <button className="modal-close" onClick={() => setPricingModal(null)}>✕</button>
+                <h2 className="modal-title">Set Pricing — Go Live</h2>
+                <button className="modal-close" onClick={() => setPricingModal(null)}>×</button>
               </div>
               <p className="text-muted text-sm" style={{ marginBottom: '1.25rem' }}>
                 Set the selling price and warranty before this device goes live in the shop.
@@ -488,7 +488,7 @@ const EngineerDashboard = () => {
                   </select>
                 </div>
                 <button type="submit" className="btn btn-success w-full" disabled={submitting}>
-                  {submitting ? <span className="spinner" /> : '🟢 Approve & Go Live'}
+                  {submitting ? <span className="spinner" /> : 'Approve & Go Live'}
                 </button>
               </form>
             </div>

@@ -64,7 +64,7 @@ const WishlistDrawer = () => {
         <div className="avrel-drawer-body">
           {wishlist.length === 0 ? (
             <div className="avrel-drawer-empty">
-              <div className="avrel-empty-icon">🤍</div>
+              <div className="avrel-empty-icon"><Heart size={48} strokeWidth={1.5} /></div>
               <h3 className="avrel-empty-title">Your wishlist is empty</h3>
               <p className="avrel-empty-sub">
                 Click the heart icon on any phone card to save devices for easy comparison.

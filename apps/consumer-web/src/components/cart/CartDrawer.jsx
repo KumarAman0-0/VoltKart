@@ -86,7 +86,7 @@ const CartDrawer = () => {
         <div className="avrel-drawer-body">
           {cart.length === 0 ? (
             <div className="avrel-drawer-empty">
-              <div className="avrel-empty-icon">🛍️</div>
+              <div className="avrel-empty-icon"><ShoppingBag size={48} strokeWidth={1.5} /></div>
               <h3 className="avrel-empty-title">Your bag is empty</h3>
               <p className="avrel-empty-sub">
                 Explore our catalog of verified phones flashed with custom VoltKart OS editions.

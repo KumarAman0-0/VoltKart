@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Search } from 'lucide-react';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import CartDrawer from './components/cart/CartDrawer';
@@ -87,7 +88,7 @@ function App() {
             {/* 404 */}
             <Route path="*" element={
               <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem', background: 'var(--bg-primary)' }}>
-                <div style={{ fontSize: '4rem' }}>🔍</div>
+                <div style={{ color: 'var(--text-secondary)' }}><Search size={56} strokeWidth={1.5} /></div>
                 <h1 style={{ fontSize: '2rem' }}>Page not found</h1>
                 <a href="/" className="btn btn-primary">Go to VoltKart Home</a>
               </div>

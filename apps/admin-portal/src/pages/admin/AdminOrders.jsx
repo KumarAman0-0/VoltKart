@@ -3,7 +3,7 @@ import DashboardLayout from '../../components/layout/DashboardLayout';
 import StatusBadge from '../../components/common/StatusBadge';
 import { adminAPI } from '../../api';
 import toast from 'react-hot-toast';
-import { Package, Truck, CheckCircle2, Clock, Filter, Eye } from 'lucide-react';
+import { Package, Truck, CheckCircle2, Clock, Filter, Eye, X } from 'lucide-react';
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -162,7 +162,7 @@ const AdminOrders = () => {
             <form onSubmit={handleUpdateStatus}>
               <div className="modal-header">
                 <h2>Manage Order #{selectedOrder._id.slice(-6).toUpperCase()}</h2>
-                <button type="button" className="btn-close" onClick={() => setSelectedOrder(null)}>✕</button>
+                <button type="button" className="btn-close" onClick={() => setSelectedOrder(null)}><X size={16} /></button>
               </div>
               <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ background: 'var(--bg-glass)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>

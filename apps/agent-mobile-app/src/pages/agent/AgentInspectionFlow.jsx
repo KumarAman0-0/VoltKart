@@ -56,13 +56,13 @@ const TriState = ({ value, onChange }) => (
         padding: '0.4rem 0.9rem', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem',
         background: value === true ? 'var(--volt-success)' : 'var(--bg-glass)',
         color: value === true ? '#fff' : 'var(--text-secondary)',
-      }}>✓ Pass</button>
+      }}>Pass</button>
     <button type="button" onClick={() => onChange(false)}
       style={{
         padding: '0.4rem 0.9rem', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem',
         background: value === false ? 'var(--volt-danger)' : 'var(--bg-glass)',
         color: value === false ? '#fff' : 'var(--text-secondary)',
-      }}>✗ Fail</button>
+      }}>Fail</button>
   </div>
 );
 
@@ -111,17 +111,17 @@ const AgentInspectionFlow = () => {
             accuracy: Math.round(pos.coords.accuracy),
           };
           setGpsLocked(loc);
-          toast.success(`📍 Doorstep GPS Locked: ${loc.latitude}, ${loc.longitude}`);
+          toast.success(`Doorstep GPS Locked: ${loc.latitude}, ${loc.longitude}`);
         },
         () => {
           const fallback = { latitude: '28.6139', longitude: '77.2090', accuracy: 12 };
           setGpsLocked(fallback);
-          toast.success('📍 Doorstep GPS Location Confirmed');
+          toast.success('Doorstep GPS Location Confirmed');
         }
       );
     } else {
       setGpsLocked({ latitude: '28.6139', longitude: '77.2090', accuracy: 12 });
-      toast.success('📍 Doorstep Location Confirmed');
+      toast.success('Doorstep Location Confirmed');
     }
   };
 
@@ -187,7 +187,7 @@ const AgentInspectionFlow = () => {
         }
         return prev;
       });
-      toast.success(`⚡ Live: ${testKey} test passed!`, { duration: 1500 });
+      toast.success(`Live: ${testKey} test passed!`, { duration: 1500 });
     });
 
     socket.on('live_diagnostic_completed', ({ autoTests, battery }) => {
@@ -206,7 +206,7 @@ const AgentInspectionFlow = () => {
         setBatteryHealth({ percent: battery.percent, passed: battery.passed });
       }
       setDiagStatus('received');
-      toast.success('🎉 Live test results received from seller phone! ✓');
+      toast.success('Live test results received from seller phone!');
     });
 
     return () => {
@@ -239,7 +239,7 @@ const AgentInspectionFlow = () => {
           }
           setDiagStatus('received');
           clearInterval(interval);
-          toast.success('Live test results received from seller phone! ✓');
+          toast.success('Live test results received from seller phone!');
         }
       } catch {
         // silent polling catch
@@ -317,7 +317,7 @@ const AgentInspectionFlow = () => {
       setOtpSent(true);
       toast.success('OTP sent to seller\'s phone');
       // Dev: show OTP in toast
-      if (data.devOtp) toast(`Dev OTP: ${data.devOtp}`, { icon: '🔑' });
+      if (data.devOtp) toast(`Dev OTP: ${data.devOtp}`);
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to send OTP');
     } finally { setSubmitting(false); }
@@ -331,7 +331,7 @@ const AgentInspectionFlow = () => {
         otp: handoverOtp, accepted,
         declineReason: accepted ? undefined : 'Price not acceptable',
       });
-      toast.success(accepted ? '🎉 Pickup complete! Payment will be processed.' : 'Seller declined. Device returned.');
+      toast.success(accepted ? 'Pickup complete! Payment will be processed.' : 'Seller declined. Device returned.');
       navigate('/agent');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Handover failed');
@@ -403,14 +403,14 @@ const AgentInspectionFlow = () => {
                 <div>
                   <div className="text-muted text-sm" style={{ marginBottom: 4 }}>Pickup Slot</div>
                   <div style={{ fontWeight: 600 }}>
-                    {pickup.pickupSlot === 'morning' ? '🌅 Morning (9-12)' :
-                     pickup.pickupSlot === 'afternoon' ? '☀️ Afternoon (12-3)' :
-                     pickup.pickupSlot === 'evening' ? '🌆 Evening (3-6)' : '—'}
+                    {pickup.pickupSlot === 'morning' ? 'Morning (9-12)' :
+                     pickup.pickupSlot === 'afternoon' ? 'Afternoon (12-3)' :
+                     pickup.pickupSlot === 'evening' ? 'Evening (3-6)' : '—'}
                   </div>
                 </div>
               </div>
               <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border)' }}>
-                <div className="text-muted text-sm" style={{ marginBottom: 4 }}>📍 Address</div>
+                <div className="text-muted text-sm" style={{ marginBottom: 4 }}>Address</div>
                 <div style={{ fontWeight: 500 }}>
                   {pickup.address?.street}, {pickup.address?.city}, {pickup.address?.state} — {pickup.address?.pincode}
                 </div>
@@ -437,7 +437,7 @@ const AgentInspectionFlow = () => {
                   <div>
                     <div style={{ fontWeight: 600, fontSize: '0.85rem' }}>Doorstep GPS Verification</div>
                     <div style={{ fontSize: '0.75rem', color: gpsLocked ? 'var(--volt-success)' : 'var(--text-muted)' }}>
-                      {gpsLocked ? `✓ Locked: ${gpsLocked.latitude}, ${gpsLocked.longitude}` : 'Audit location on arrival'}
+                      {gpsLocked ? `Locked: ${gpsLocked.latitude}, ${gpsLocked.longitude}` : 'Audit location on arrival'}
                     </div>
                   </div>
                   <button
@@ -530,12 +530,12 @@ const AgentInspectionFlow = () => {
                   flex: 1, padding: '0.75rem', borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700,
                   background: imeiMatched === true ? 'var(--volt-success)' : 'var(--bg-glass)',
                   color: imeiMatched === true ? '#fff' : 'var(--text-primary)',
-                }}>✓ Yes, Matches — {pickup.model}</button>
+                }}>Yes, Matches — {pickup.model}</button>
                 <button type="button" onClick={() => setImeiMatched(false)} style={{
                   flex: 1, padding: '0.75rem', borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700,
                   background: imeiMatched === false ? 'var(--volt-danger)' : 'var(--bg-glass)',
                   color: imeiMatched === false ? '#fff' : 'var(--text-primary)',
-                }}>✗ No, Mismatch</button>
+                }}>No, Mismatch</button>
               </div>
             </div>
 
@@ -589,7 +589,7 @@ const AgentInspectionFlow = () => {
                     color: diagStatus === 'received' ? 'var(--volt-success)' : '#00e5ff',
                     fontWeight: 700,
                   }}>
-                    {diagStatus === 'received' ? '✓ Results Received Live' : '⏳ Waiting for Seller...'}
+                    {diagStatus === 'received' ? 'Results Received Live' : 'Waiting for Seller...'}
                   </span>
                 )}
               </div>
@@ -622,9 +622,9 @@ const AgentInspectionFlow = () => {
                   </div>
                   <div style={{ fontSize: '0.75rem', color: diagStatus === 'received' ? 'var(--volt-success)' : 'var(--text-muted)' }}>
                     {diagStatus === 'received' ? (
-                      <span style={{ fontWeight: 600 }}>🎉 Seller completed all tests! Results have been filled below.</span>
+                      <span style={{ fontWeight: 600 }}>Seller completed all tests! Results have been filled below.</span>
                     ) : (
-                      <span>📡 Live polling seller results every 2.5 seconds. Checklist will auto-populate when seller finishes.</span>
+                      <span>Live polling seller results every 2.5 seconds. Checklist will auto-populate when seller finishes.</span>
                     )}
                   </div>
                 </div>
@@ -648,14 +648,14 @@ const AgentInspectionFlow = () => {
 
               {/* Battery health */}
               <div style={{ background: 'var(--bg-glass)', borderRadius: 10, padding: '0.875rem 1rem', border: '1px solid var(--border)' }}>
-                <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' }}>🔋 Battery Health (%)</div>
+                <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' }}>Battery Health (%)</div>
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
                   <input className="form-input" type="number" placeholder="e.g. 87" min={0} max={100}
                     value={batteryHealth.percent} style={{ maxWidth: 100 }}
                     onChange={e => setBatteryHealth(b => ({ ...b, percent: e.target.value, passed: Number(e.target.value) >= 80 }))} />
                   {batteryHealth.percent && (
                     <span style={{ fontWeight: 700, color: batteryHealth.passed ? 'var(--volt-success)' : 'var(--volt-danger)' }}>
-                      {batteryHealth.passed ? '✓ Good (≥80%)' : '✗ Degraded (<80%)'}
+                      {batteryHealth.passed ? 'Good (≥80%)' : 'Degraded (<80%)'}
                     </span>
                   )}
                 </div>
@@ -726,7 +726,7 @@ const AgentInspectionFlow = () => {
 
             {/* Locks */}
             <div style={{ background: 'var(--bg-glass)', borderRadius: 10, padding: '1rem', marginBottom: '1rem', border: '1px solid var(--border)' }}>
-              <div style={{ fontWeight: 600, marginBottom: '0.75rem' }}>🔓 Accounts & Locks Cleared</div>
+              <div style={{ fontWeight: 600, marginBottom: '0.75rem' }}>Accounts & Locks Cleared</div>
               {[
                 { key: 'google',  label: 'Google Account (FRP cleared)' },
                 { key: 'iCloud',  label: 'iCloud Account (iPhone)' },
@@ -754,7 +754,7 @@ const AgentInspectionFlow = () => {
 
             {/* Accessories */}
             <div style={{ background: 'var(--bg-glass)', borderRadius: 10, padding: '1rem', marginBottom: '1.25rem', border: '1px solid var(--border)' }}>
-              <div style={{ fontWeight: 600, marginBottom: '0.75rem' }}>📦 Accessories Included</div>
+              <div style={{ fontWeight: 600, marginBottom: '0.75rem' }}>Accessories Included</div>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 {['box', 'charger', 'bill', 'earphones', 'other'].map(acc => (
                   <button key={acc} type="button" onClick={() => toggleAccessory(acc)} style={{
@@ -798,7 +798,7 @@ const AgentInspectionFlow = () => {
                       {pt.label}
                       {pt.required && <span style={{ color: 'var(--volt-danger)', marginLeft: 4 }}>*</span>}
                     </div>
-                    {photos[pt.key] && <div style={{ fontSize: '0.75rem', color: 'var(--volt-success)', marginTop: 2 }}>✓ {photos[pt.key].name}</div>}
+                    {photos[pt.key] && <div style={{ fontSize: '0.75rem', color: 'var(--volt-success)', marginTop: 2 }}>{photos[pt.key].name}</div>}
                   </div>
                   <label style={{ cursor: 'pointer' }}>
                     <div className={`btn ${photos[pt.key] ? 'btn-success' : 'btn-outline'} btn-sm`}>
@@ -896,7 +896,7 @@ const AgentInspectionFlow = () => {
             {!otpSent ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <button className="btn btn-success w-full" onClick={handleSendOtp} disabled={submitting}>
-                  {submitting ? <span className="spinner" /> : '📱 Seller Accepts — Send OTP to their Phone'}
+                  {submitting ? <span className="spinner" /> : 'Seller Accepts — Send OTP to their Phone'}
                 </button>
                 <button className="btn btn-danger w-full" onClick={() => handleHandover(false)} disabled={submitting}>
                   <XCircle size={16} /> Seller Declines — Return Device
@@ -905,7 +905,7 @@ const AgentInspectionFlow = () => {
             ) : (
               <div>
                 <div className="alert alert-success" style={{ marginBottom: '1.25rem' }}>
-                  ✓ OTP sent to seller's registered phone number
+                  OTP sent to seller's registered phone number
                 </div>
                 <div className="form-group">
                   <label className="form-label">Enter OTP (from seller's phone) *</label>

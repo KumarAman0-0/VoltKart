@@ -60,15 +60,13 @@ export const CartProvider = ({ children }) => {
         },
       ];
     });
-    toast.success(`Added ${device.model || 'Device'} (${chosenEdition}) to Bag!`, {
-      icon: '🛍️',
-    });
+    toast.success(`Added ${device.model || 'Device'} (${chosenEdition}) to Bag!`);
     setIsCartOpen(true);
   };
 
   const removeFromCart = (cartId) => {
     setCart(prev => prev.filter(item => item.cartId !== cartId));
-    toast('Item removed from Bag', { icon: '🗑️' });
+    toast('Item removed from Bag');
   };
 
   const updateQuantity = (cartId, delta) => {
@@ -94,10 +92,10 @@ export const CartProvider = ({ children }) => {
     setWishlist(prev => {
       const exists = prev.some(item => (item._id || item.id) === devId);
       if (exists) {
-        toast('Removed from saved list', { icon: '🤍' });
+        toast('Removed from saved list');
         return prev.filter(item => (item._id || item.id) !== devId);
       } else {
-        toast.success(`Saved ${device.model || 'Device'} to Wishlist!`, { icon: '💖' });
+        toast.success(`Saved ${device.model || 'Device'} to Wishlist!`);
         return [...prev, device];
       }
     });

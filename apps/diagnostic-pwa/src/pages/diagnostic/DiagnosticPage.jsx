@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import {
   Smartphone, CheckCircle, XCircle, Volume2, Mic,
   Camera, Zap, Compass, Wifi, Battery, ArrowRight, RefreshCw,
+  AlertTriangle, Check
 } from 'lucide-react';
 
 const DiagnosticPage = () => {
@@ -262,7 +263,7 @@ const DiagnosticPage = () => {
       setResults(r => ({ ...r, vibration: { passed: true, notes: 'Vibrated' } }));
       toast.success('Phone should vibrate now!');
     } else {
-      toast('Vibration API not supported in this browser', { icon: 'ℹ️' });
+      toast('Vibration API not supported in this browser');
     }
   };
 
@@ -324,7 +325,7 @@ const DiagnosticPage = () => {
   if (!session) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#0a0d12', color: '#fff', padding: '1.5rem', textAlign: 'center' }}>
-        <div style={{ fontSize: '3rem' }}>⚠️</div>
+        <AlertTriangle size={48} color="#f0a12c" />
         <h2 style={{ margin: '1rem 0 0.5rem' }}>Session Expired or Invalid</h2>
         <p style={{ color: '#8892b0', maxWidth: 360 }}>
           The diagnostic code <strong>{code}</strong> is not recognized or has expired. Please ask the VoltKart agent to show a fresh QR code.
@@ -338,7 +339,7 @@ const DiagnosticPage = () => {
       {/* Header */}
       <header style={{ padding: '0.9rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(18, 22, 30, 0.9)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#00e5ff' }}>⚡ VoltKart</span>
+          <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#00e5ff' }}>VoltKart</span>
           <span style={{ fontSize: '0.75rem', padding: '0.15rem 0.5rem', borderRadius: 6, background: 'rgba(0, 229, 255, 0.15)', color: '#00e5ff', fontWeight: 600 }}>
             DIAGNOSTICS
           </span>
@@ -367,12 +368,12 @@ const DiagnosticPage = () => {
             <div style={{ width: '100%', maxWidth: 360, background: 'rgba(255,255,255,0.03)', borderRadius: 12, padding: '1rem', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '2rem', textAlign: 'left' }}>
               <div style={{ fontSize: '0.8rem', color: '#8892b0', marginBottom: '0.4rem' }}>Checklist summary:</div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.85rem' }}>
-                <div>✓ Touch & Multi-touch</div>
-                <div>✓ Screen & Dead Pixels</div>
-                <div>✓ Audio & Microphone</div>
-                <div>✓ Front & Rear Cameras</div>
-                <div>✓ Vibration & Tilt</div>
-                <div>✓ Battery & Connectivity</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Check size={14} color="#00e5ff" /> Touch & Multi-touch</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Check size={14} color="#00e5ff" /> Screen & Dead Pixels</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Check size={14} color="#00e5ff" /> Audio & Microphone</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Check size={14} color="#00e5ff" /> Front & Rear Cameras</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Check size={14} color="#00e5ff" /> Vibration & Tilt</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Check size={14} color="#00e5ff" /> Battery & Connectivity</div>
               </div>
             </div>
 
@@ -433,7 +434,7 @@ const DiagnosticPage = () => {
                       transition: 'background 0.15s ease',
                     }}
                   >
-                    {isTouched ? '✓' : idx + 1}
+                    {isTouched ? <Check size={16} /> : idx + 1}
                   </div>
                 );
               })}
@@ -493,7 +494,7 @@ const DiagnosticPage = () => {
                     }}
                     style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#20bf6b', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    ✓ Screen is Clean (Pass)
+                    Screen is Clean (Pass)
                   </button>
                   <button
                     onClick={() => {
@@ -502,7 +503,7 @@ const DiagnosticPage = () => {
                     }}
                     style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#eb3b5a', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    ✗ Has Issues (Fail)
+                    Has Issues (Fail)
                   </button>
                 </div>
               </div>
@@ -543,7 +544,7 @@ const DiagnosticPage = () => {
                     }}
                     style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#20bf6b', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    ✓ Yes, Loud & Clear
+                    Yes, Loud & Clear
                   </button>
                   <button
                     onClick={() => {
@@ -552,7 +553,7 @@ const DiagnosticPage = () => {
                     }}
                     style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#eb3b5a', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    ✗ No Sound
+                    No Sound
                   </button>
                 </div>
               </div>
@@ -591,7 +592,7 @@ const DiagnosticPage = () => {
                   }} />
                 </div>
                 <div style={{ fontSize: '0.8rem', color: micVolume > 20 ? '#20bf6b' : '#8892b0', marginTop: '0.5rem', fontWeight: 600 }}>
-                  {micVolume > 20 ? '✓ Voice Detected!' : 'Listening... Speak into mic'}
+                  {micVolume > 20 ? 'Voice Detected!' : 'Listening... Speak into mic'}
                 </div>
               </div>
             )}
@@ -605,7 +606,7 @@ const DiagnosticPage = () => {
                 }}
                 style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#20bf6b', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
               >
-                ✓ Mic Working
+                Mic Working
               </button>
               <button
                 onClick={() => {
@@ -615,7 +616,7 @@ const DiagnosticPage = () => {
                 }}
                 style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#eb3b5a', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
               >
-                ✗ Mic Failed
+                Mic Failed
               </button>
             </div>
           </div>
@@ -673,7 +674,7 @@ const DiagnosticPage = () => {
                 }}
                 style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#20bf6b', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
               >
-                ✓ Both Cameras OK
+                Both Cameras OK
               </button>
               <button
                 onClick={() => {
@@ -687,7 +688,7 @@ const DiagnosticPage = () => {
                 }}
                 style={{ flex: 1, padding: '0.8rem', borderRadius: 8, background: '#eb3b5a', color: '#fff', border: 'none', fontWeight: 700, cursor: 'pointer' }}
               >
-                ✗ Has Issues
+                Has Issues
               </button>
             </div>
           </div>
@@ -714,7 +715,7 @@ const DiagnosticPage = () => {
             </div>
 
             <div style={{ fontSize: '0.85rem', color: tiltDetected ? '#20bf6b' : '#8892b0', marginBottom: '1.5rem', fontWeight: 600 }}>
-              {tiltDetected ? '✓ Gyro/Tilt Sensor OK!' : 'Tilt your phone left/right'}
+              {tiltDetected ? 'Gyro/Tilt Sensor OK!' : 'Tilt your phone left/right'}
             </div>
 
             <div style={{ width: '100%', maxWidth: 320, display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
@@ -726,7 +727,7 @@ const DiagnosticPage = () => {
               </button>
               <div style={{ padding: '0.75rem', borderRadius: 8, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#8892b0' }}><Battery size={16} /> Battery Level:</span>
-                <strong style={{ color: results.battery.level > 20 ? '#20bf6b' : '#eb3b5a' }}>{results.battery.level}% {results.battery.charging ? '⚡' : ''}</strong>
+                <strong style={{ color: results.battery.level > 20 ? '#20bf6b' : '#eb3b5a' }}>{results.battery.level}% {results.battery.charging ? '(Charging)' : ''}</strong>
               </div>
             </div>
 
@@ -790,7 +791,7 @@ const DiagnosticPage = () => {
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
               }}
             >
-              {submitting ? <span className="spinner" /> : '🚀 Submit Results to Agent'}
+              {submitting ? <span className="spinner" /> : 'Submit Results to Agent'}
             </button>
           </div>
         )}

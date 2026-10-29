@@ -4,7 +4,10 @@ import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
 import {
   Shield, Check, ArrowRight, Lock, Eye, Users,
-  Smartphone, Bell, Compass, Heart, AlertCircle, Sparkles
+  Smartphone, Bell, Compass, Heart, AlertCircle, Sparkles,
+  Phone, BookOpen, Palette, Camera, Music, AlertOctagon,
+  MessageSquare, Globe, Image, Headphones, MapPin, Target,
+  Briefcase, Mail, Settings, Video, HeartPulse
 } from 'lucide-react';
 
 const EDITIONS_DATA = {
@@ -18,12 +21,12 @@ const EDITIONS_DATA = {
       bg: 'linear-gradient(135deg, #e0f9f5 0%, #d5f5ee 100%)',
       clockColor: '#005b49',
       apps: [
-        { icon: '📞', name: 'Parents' },
-        { icon: '📚', name: 'Learning' },
-        { icon: '🎨', name: 'Drawing' },
-        { icon: '📷', name: 'Camera' },
-        { icon: '🎵', name: 'Music' },
-        { icon: '🆘', name: 'Emergency' },
+        { Icon: Phone, name: 'Parents' },
+        { Icon: BookOpen, name: 'Learning' },
+        { Icon: Palette, name: 'Drawing' },
+        { Icon: Camera, name: 'Camera' },
+        { Icon: Music, name: 'Music' },
+        { Icon: AlertOctagon, name: 'Emergency' },
       ],
       notice: 'Approved apps only · Safe web filter · Daily bedtime lock',
     },
@@ -47,12 +50,12 @@ const EDITIONS_DATA = {
       bg: 'linear-gradient(135deg, #edeafc 0%, #dfdafb 100%)',
       clockColor: '#2b2375',
       apps: [
-        { icon: '💬', name: 'Chats' },
-        { icon: '🌐', name: 'Browser' },
-        { icon: '📸', name: 'Photos' },
-        { icon: '🎧', name: 'Spotify' },
-        { icon: '🗺️', name: 'Maps' },
-        { icon: '📖', name: 'Study Focus' },
+        { Icon: MessageSquare, name: 'Chats' },
+        { Icon: Globe, name: 'Browser' },
+        { Icon: Image, name: 'Photos' },
+        { Icon: Headphones, name: 'Spotify' },
+        { Icon: MapPin, name: 'Maps' },
+        { Icon: Target, name: 'Study Focus' },
       ],
       notice: 'Transparent rules · Study mode · Shared wellbeing reports',
     },
@@ -76,12 +79,12 @@ const EDITIONS_DATA = {
       bg: 'linear-gradient(135deg, #e8f9ef 0%, #dbf5e4 100%)',
       clockColor: '#0e4a23',
       apps: [
-        { icon: '💼', name: 'Work Profile' },
-        { icon: '🔒', name: 'Secure Folder' },
-        { icon: '🛡️', name: 'Privacy Center' },
-        { icon: '📧', name: 'Email' },
-        { icon: '🌐', name: 'Brave/Vanadium' },
-        { icon: '⚙️', name: 'Settings' },
+        { Icon: Briefcase, name: 'Work Profile' },
+        { Icon: Lock, name: 'Secure Folder' },
+        { Icon: Shield, name: 'Privacy Center' },
+        { Icon: Mail, name: 'Email' },
+        { Icon: Globe, name: 'Brave/Vanadium' },
+        { Icon: Settings, name: 'Settings' },
       ],
       notice: 'Full freedom · Segregated profiles · Network tracker blocker',
     },
@@ -105,12 +108,12 @@ const EDITIONS_DATA = {
       bg: 'linear-gradient(135deg, #fff7eb 0%, #feeeda 100%)',
       clockColor: '#633900',
       apps: [
-        { icon: '📞', name: 'CALL' },
-        { icon: '📹', name: 'VIDEO CALL' },
-        { icon: '🖼️', name: 'PHOTOS' },
-        { icon: '💬', name: 'MESSAGES' },
-        { icon: '💊', name: 'MEDICINE' },
-        { icon: '🚨', name: 'EMERGENCY SOS' },
+        { Icon: Phone, name: 'CALL' },
+        { Icon: Video, name: 'VIDEO CALL' },
+        { Icon: Image, name: 'PHOTOS' },
+        { Icon: MessageSquare, name: 'MESSAGES' },
+        { Icon: HeartPulse, name: 'MEDICINE' },
+        { Icon: AlertOctagon, name: 'EMERGENCY SOS' },
       ],
       notice: 'Large high-contrast tiles · Anti-scam warnings · 1-tap family video',
     },
@@ -232,7 +235,9 @@ const EditionsPage = () => {
                           boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
                         }}
                       >
-                        <span style={{ fontSize: '1.8rem' }}>{app.icon}</span>
+                        <div style={{ color: edition.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <app.Icon size={28} />
+                        </div>
                         <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#121417' }}>{app.name}</span>
                       </div>
                     ))}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
-import { Mail, Lock, Eye, EyeOff, Zap } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, Zap, ShoppingBag, Package } from 'lucide-react';
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -48,11 +48,11 @@ const LoginPage = () => {
         <div style={{ marginBottom: '1.5rem' }}>
           <p className="form-label" style={{ marginBottom: '0.5rem' }}>One-Click Customer Access:</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            <button onClick={() => fillDemo('buyer')} className="btn btn-ghost btn-sm">
-              🛍️ Buyer Account
+            <button onClick={() => fillDemo('buyer')} className="btn btn-ghost btn-sm" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+              <ShoppingBag size={14} /> Buyer Account
             </button>
-            <button onClick={() => fillDemo('seller')} className="btn btn-ghost btn-sm">
-              📦 Seller Account
+            <button onClick={() => fillDemo('seller')} className="btn btn-ghost btn-sm" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+              <Package size={14} /> Seller Account
             </button>
           </div>
         </div>

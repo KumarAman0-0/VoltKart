@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import {
   Shield, Lock, Sparkles, Layers, RotateCw,
-  Eye, Check, ArrowDown, ChevronRight, Zap, Smartphone
+  Eye, Check, ArrowDown, ChevronRight, Zap, Smartphone,
+  Phone, BookOpen, Palette, Camera, Target, MessageSquare,
+  Music, Radio, Briefcase, Key, Send, Globe, Users,
+  AlertOctagon, Image, HeartPulse
 } from 'lucide-react';
 
 const EDITIONS_PREVIEW = {
@@ -11,10 +14,10 @@ const EDITIONS_PREVIEW = {
     color: '#00d4aa',
     clock: '10:30',
     apps: [
-      { name: 'Parents', icon: '📞', bg: '#00d4aa' },
-      { name: 'Learning', icon: '📚', bg: '#ffa502' },
-      { name: 'Drawing', icon: '🎨', bg: '#ff4757' },
-      { name: 'Camera', icon: '📷', bg: '#2ed573' },
+      { name: 'Parents', Icon: Phone, bg: '#00d4aa' },
+      { name: 'Learning', Icon: BookOpen, bg: '#ffa502' },
+      { name: 'Drawing', Icon: Palette, bg: '#ff4757' },
+      { name: 'Camera', Icon: Camera, bg: '#2ed573' },
     ],
     badge: 'Approved Apps Only · Bedtime Lock',
   },
@@ -24,10 +27,10 @@ const EDITIONS_PREVIEW = {
     color: '#6c63ff',
     clock: '16:45',
     apps: [
-      { name: 'Study Focus', icon: '🎯', bg: '#6c63ff' },
-      { name: 'Chat', icon: '💬', bg: '#0094f7' },
-      { name: 'Music', icon: '🎵', bg: '#2ed573' },
-      { name: 'Podcasts', icon: '🎙️', bg: '#ffa502' },
+      { name: 'Study Focus', Icon: Target, bg: '#6c63ff' },
+      { name: 'Chat', Icon: MessageSquare, bg: '#0094f7' },
+      { name: 'Music', Icon: Music, bg: '#2ed573' },
+      { name: 'Podcasts', Icon: Radio, bg: '#ffa502' },
     ],
     badge: 'Study Focus Active · Shared Wellbeing',
   },
@@ -37,10 +40,10 @@ const EDITIONS_PREVIEW = {
     color: '#2ed573',
     clock: '09:15',
     apps: [
-      { name: 'Work Profile', icon: '💼', bg: '#23272c' },
-      { name: 'Encrypted Vault', icon: '🔐', bg: '#2ed573' },
-      { name: 'Signal', icon: '💬', bg: '#0094f7' },
-      { name: 'Browser (Shield)', icon: '🛡️', bg: '#ffa502' },
+      { name: 'Work Profile', Icon: Briefcase, bg: '#23272c' },
+      { name: 'Encrypted Vault', Icon: Key, bg: '#2ed573' },
+      { name: 'Signal', Icon: Send, bg: '#0094f7' },
+      { name: 'Browser (Shield)', Icon: Globe, bg: '#ffa502' },
     ],
     badge: 'Zero Telemetry · Work Segregation',
   },
@@ -50,10 +53,10 @@ const EDITIONS_PREVIEW = {
     color: '#ffa502',
     clock: '11:20',
     apps: [
-      { name: 'Family Call', icon: '👨‍👩‍👧', bg: '#20bf6b' },
-      { name: 'Emergency SOS', icon: '🆘', bg: '#eb3b5a' },
-      { name: 'Photos', icon: '🖼️', bg: '#ffa502' },
-      { name: 'Doctor', icon: '🏥', bg: '#0094f7' },
+      { name: 'Family Call', Icon: Users, bg: '#20bf6b' },
+      { name: 'Emergency SOS', Icon: AlertOctagon, bg: '#eb3b5a' },
+      { name: 'Photos', Icon: Image, bg: '#ffa502' },
+      { name: 'Doctor', Icon: HeartPulse, bg: '#0094f7' },
     ],
     badge: 'Extra Large Tiles · Anti-Scam Shield',
   },
@@ -283,14 +286,17 @@ const Hero3DPhone = () => {
 
                 {/* 2x2 Interactive Launcher App Grid */}
                 <div className="phone-launcher-grid">
-                  {ed.apps.map((app, i) => (
-                    <div key={i} className="phone-app-tile">
-                      <div className="phone-app-icon-wrap" style={{ background: `${app.bg}22`, border: `1px solid ${app.bg}40` }}>
-                        <span className="phone-app-emoji">{app.icon}</span>
+                  {ed.apps.map((app, i) => {
+                    const AppIcon = app.Icon;
+                    return (
+                      <div key={i} className="phone-app-tile">
+                        <div className="phone-app-icon-wrap" style={{ background: `${app.bg}22`, border: `1px solid ${app.bg}40`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <AppIcon size={18} color={app.bg} />
+                        </div>
+                        <span className="phone-app-label">{app.name}</span>
                       </div>
-                      <span className="phone-app-label">{app.name}</span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* Bottom Launcher Security Badge */}

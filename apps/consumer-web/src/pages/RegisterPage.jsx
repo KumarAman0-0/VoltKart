@@ -5,8 +5,8 @@ import toast from 'react-hot-toast';
 import { Zap } from 'lucide-react';
 
 const ROLES = [
-  { value: 'buyer', label: '🛍️ Buyer — Buy privacy phones' },
-  { value: 'seller', label: '📦 Seller — Sell your old device' },
+  { value: 'buyer', label: 'Buyer — Buy privacy phones' },
+  { value: 'seller', label: 'Seller — Sell your old device' },
 ];
 
 const RegisterPage = () => {

@@ -1,17 +1,17 @@
-# ⚡ VoltKart — Privacy-OS Refurbished Marketplace Ecosystem
+# VoltKart — Privacy-OS Refurbished Marketplace Ecosystem
 
 > A production-grade managed marketplace for privacy-focused smartphones and tablets running **GrapheneOS**, **/e/OS**, **CalyxOS**, and **LineageOS**.  
 > Engineered following the complete **VoltKart System Design & Operations Specification**.
 
 ---
 
-## 🌟 Ecosystem Architecture
+## Ecosystem Architecture
 
 VoltKart is designed as a distributed multi-app ecosystem. Each role has a dedicated frontend application tailored to its specific viewport and operational requirements, all powered by a centralized Express + WebSocket backend with zero-configuration in-memory database fallback.
 
 ```
                               ┌─────────────────────────────────────────┐
-                              │       ⚡ VoltKart Backend Server        │
+                              │          VoltKart Backend Server        │
                               │        Port 5000 · Express 5            │
                               │   MongoDB / In-Memory · Socket.io Engine│
                               └────────────────────┬────────────────────┘
@@ -31,7 +31,7 @@ VoltKart is designed as a distributed multi-app ecosystem. Each role has a dedic
 
 ---
 
-## 📱 Service Matrix & Port Mapping
+## Service Matrix & Port Mapping
 
 | Service / App | Directory | Port | Local URL | Primary Target & Description |
 |---|---|---|---|---|
@@ -45,7 +45,7 @@ VoltKart is designed as a distributed multi-app ecosystem. Each role has a dedic
 
 ---
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 ### Prerequisites
 - **Node.js**: v18.0.0 or higher (v20 / v22 recommended)
@@ -119,7 +119,7 @@ npm run dev:admin       # Admin Console (Port 5177)
 
 ---
 
-## 🔑 Pre-Seeded Test Credentials
+## Pre-Seeded Test Credentials
 
 The database automatically seeds on first launch with complete test accounts, pricing matrices, base prices, grade rules, devices, and orders.
 
@@ -136,7 +136,7 @@ The database automatically seeds on first launch with complete test accounts, pr
 
 ---
 
-## 🔄 Core Workflows & State Machines
+## Core Workflows & State Machines
 
 ### 1. Seller Trade-In & Doorstep Pickup Flow
 
@@ -213,7 +213,7 @@ The database automatically seeds on first launch with complete test accounts, pr
 
 ---
 
-## 🔬 Zero-Install Diagnostic PWA Features
+## Zero-Install Diagnostic PWA Features
 
 The **Diagnostic PWA** (`apps/diagnostic-pwa`) runs directly in any modern mobile browser without requiring app installation:
 
@@ -228,7 +228,7 @@ The **Diagnostic PWA** (`apps/diagnostic-pwa`) runs directly in any modern mobil
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 Voltkart/
@@ -271,7 +271,7 @@ Voltkart/
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 The backend comes pre-configured with zero-friction defaults. To customize, adjust [`server/.env`](file:///home/dell/Desktop/Voltkart/server/.env):
 
@@ -288,7 +288,7 @@ CLIENT_URL=http://localhost:5173
 
 ---
 
-## 🛡️ Security & Privacy Pillars
+## Security & Privacy Pillars
 
 1. **Hardware & KYC Privacy Barrier**: Seller KYC and payout bank details are completely isolated from buyers, field engineers, and public APIs.
 2. **Atomic Inventory Locking**: Purchases utilize atomic MongoDB updates to prevent race conditions or double-allocating stock.
@@ -297,7 +297,7 @@ CLIENT_URL=http://localhost:5173
 
 ---
 
-## 🤝 Contributing & Maintenance
+## Contributing & Maintenance
 
 - To add or modify deduction rules, inspect [`server/scripts/autoSeed.js`](file:///home/dell/Desktop/Voltkart/server/scripts/autoSeed.js).
 - To re-seed the database at any time, run:

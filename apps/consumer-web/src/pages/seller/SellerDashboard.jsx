@@ -3,16 +3,16 @@ import DashboardLayout from '../../components/layout/DashboardLayout';
 import StatusBadge from '../../components/common/StatusBadge';
 import { sellerAPI } from '../../api';
 import { Link } from 'react-router-dom';
-import { Plus, Package, TrendingUp, CheckCircle, XCircle, CreditCard, Info } from 'lucide-react';
+import { Plus, Package, TrendingUp, CheckCircle, XCircle, CreditCard, Info, Clock, DollarSign, Check, FileText } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const STATUS_STEPS = [
-  { key: 'submitted',      label: 'Request Sent',    icon: '📤' },
-  { key: 'approved',       label: 'Offer Approved',  icon: '💰' },
-  { key: 'on_the_way',     label: 'Agent En Route',  icon: '🚗' },
-  { key: 'picked_up',      label: 'Handover Done',   icon: '🤝' },
-  { key: 'received',       label: 'Warehouse Check', icon: '🏢' },
-  { key: 'paid',           label: 'Payment Sent',    icon: '✅' },
+  { key: 'submitted',      label: 'Request Sent',    num: 1 },
+  { key: 'approved',       label: 'Offer Approved',  num: 2 },
+  { key: 'on_the_way',     label: 'Agent En Route',  num: 3 },
+  { key: 'picked_up',      label: 'Handover Done',   num: 4 },
+  { key: 'received',       label: 'Warehouse Check', num: 5 },
+  { key: 'paid',           label: 'Payment Sent',    num: 6 },
 ];
 
 const getStepIndex = (status) => {
@@ -45,7 +45,7 @@ const StatusProgress = ({ status }) => {
                   color: done || active ? '#fff' : 'var(--text-muted)',
                   fontWeight: 700,
                   transition: 'all 0.3s',
-                }}>{done ? '✓' : step.icon}</div>
+                }}>{done ? <Check size={14} /> : step.num}</div>
                 <div style={{ fontSize: '0.65rem', marginTop: 3, color: active ? 'var(--volt-primary)' : done ? 'var(--volt-success)' : 'var(--text-muted)', textAlign: 'center', maxWidth: 65 }}>{step.label}</div>
               </div>
               {!isLast && (
@@ -56,9 +56,9 @@ const StatusProgress = ({ status }) => {
         })}
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.72rem', color: 'var(--text-muted)', padding: '0 0.25rem' }}>
-        <span>⏱️ SLA: Payment is processed within 24 hours of warehouse arrival & verification.</span>
-        {status === 'counter_offered' && <span style={{ color: 'var(--volt-warning)', fontWeight: 700 }}>⚠️ Counter-Offer Received!</span>}
-        {status === 'counter_declined' && <span style={{ color: 'var(--volt-danger)' }}>📦 Phone will be returned</span>}
+        <span>SLA: Payment is processed within 24 hours of warehouse arrival & verification.</span>
+        {status === 'counter_offered' && <span style={{ color: 'var(--volt-warning)', fontWeight: 700 }}>Counter-Offer Received!</span>}
+        {status === 'counter_declined' && <span style={{ color: 'var(--volt-danger)' }}>Phone will be returned</span>}
       </div>
     </div>
   );
@@ -112,7 +112,7 @@ const SellerDashboard = () => {
     setResponding(true);
     try {
       await sellerAPI.respondToOffer(activeOffer._id, response);
-      toast.success(response === 'accepted' ? '🎉 Offer accepted! Pickup agent will be assigned.' : 'Offer declined.');
+      toast.success(response === 'accepted' ? 'Offer accepted! Pickup agent will be assigned.' : 'Offer declined.');
       setActiveOffer(null);
       fetchRequests();
     } catch (err) {
@@ -141,7 +141,7 @@ const SellerDashboard = () => {
   const handleAcceptCounterOffer = async (id) => {
     try {
       await sellerAPI.acceptCounterOffer(id);
-      toast.success('🎉 Counter-offer accepted! Payment processed.');
+      toast.success('Counter-offer accepted! Payment processed.');
       setActiveCounterOffer(null);
       fetchRequests();
     } catch (e) {
@@ -211,14 +211,14 @@ const SellerDashboard = () => {
         {/* Stats */}
         <div className="grid-4" style={{ marginBottom: '2rem' }}>
           {[
-            { label: 'Total Requests', value: stats.total, icon: '📦', color: 'var(--volt-primary)' },
-            { label: 'In Progress', value: stats.pending, icon: '⏳', color: 'var(--volt-warning)' },
-            { label: 'Picked Up', value: stats.completed, icon: '✅', color: 'var(--volt-success)' },
-            { label: 'Payout Received', value: `₹${stats.earnings.toLocaleString('en-IN')}`, icon: '💰', color: 'var(--volt-accent)' },
+            { label: 'Total Requests', value: stats.total, Icon: Package, color: 'var(--volt-primary)' },
+            { label: 'In Progress', value: stats.pending, Icon: Clock, color: 'var(--volt-warning)' },
+            { label: 'Picked Up', value: stats.completed, Icon: CheckCircle, color: 'var(--volt-success)' },
+            { label: 'Payout Received', value: `₹${stats.earnings.toLocaleString('en-IN')}`, Icon: DollarSign, color: 'var(--volt-accent)' },
           ].map(s => (
             <div key={s.label} className="stat-card">
-              <div className="stat-icon" style={{ background: `${s.color}20` }}>
-                <span style={{ fontSize: '1.3rem' }}>{s.icon}</span>
+              <div className="stat-icon" style={{ background: `${s.color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <s.Icon size={20} color={s.color} />
               </div>
               <div className="stat-value" style={{ background: 'none', WebkitTextFillColor: s.color }}>{s.value}</div>
               <div className="stat-label">{s.label}</div>
@@ -228,7 +228,7 @@ const SellerDashboard = () => {
 
         {/* Info Alert */}
         <div className="alert alert-warning" style={{ marginBottom: '1.5rem' }}>
-          ⚡ <strong>VoltKart Direct Pickup:</strong> Once you accept our price offer, a field agent is dispatched to your address. After on-spot inspection, payout is credited directly to your UPI ID.
+          <strong>VoltKart Direct Pickup:</strong> Once you accept our price offer, a field agent is dispatched to your address. After on-spot inspection, payout is credited directly to your UPI ID.
         </div>
 
         {/* Requests Table */}
@@ -291,16 +291,16 @@ const SellerDashboard = () => {
                             style={{ background: 'var(--volt-warning)', color: '#000', fontWeight: 700 }}
                             onClick={() => handleOpenCounterOffer(r)}
                           >
-                            ⚡ Review Counter-Offer
+                            Review Counter-Offer
                           </button>
                         ) : (
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
                             <span className="text-muted text-sm" style={{ textTransform: 'capitalize' }}>
-                              {r.status === 'paid' ? '✓ Paid' :
-                               r.status === 'counter_accepted' ? '✓ Counter Accepted' :
-                               r.status === 'counter_declined' ? '✗ Counter Declined' :
-                               r.sellerResponse === 'accepted' ? '✓ Accepted' :
-                               r.sellerResponse === 'rejected' ? '✗ Declined' : r.sellerResponse}
+                              {r.status === 'paid' ? 'Paid' :
+                               r.status === 'counter_accepted' ? 'Counter Accepted' :
+                               r.status === 'counter_declined' ? 'Counter Declined' :
+                               r.sellerResponse === 'accepted' ? 'Accepted' :
+                               r.sellerResponse === 'rejected' ? 'Declined' : r.sellerResponse}
                             </span>
                             {['paid', 'picked_up', 'received', 'verified', 'counter_accepted'].includes(r.status) && (
                               <a
@@ -311,7 +311,7 @@ const SellerDashboard = () => {
                                 style={{ fontSize: '0.72rem', padding: '0.15rem 0.5rem', textDecoration: 'none' }}
                                 title="Download Official Payout & Handover Receipt (PDF)"
                               >
-                                📄 Receipt
+                                Receipt
                               </a>
                             )}
                           </div>
@@ -337,7 +337,7 @@ const SellerDashboard = () => {
 
         {/* Privacy notice per PDF Section 2.4 */}
         <div style={{ marginTop: '1rem', padding: '0.75rem 1rem', background: 'var(--bg-glass)', borderRadius: 10, fontSize: '0.8rem', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>
-          🔒 <strong>Privacy:</strong> Aapki details sirf pickup aur payment ke liye hain. Buyer ko kabhi nahi dikhengi.
+          <strong>Privacy:</strong> Aapki details sirf pickup aur payment ke liye hain. Buyer ko kabhi nahi dikhengi.
         </div>
       </div>
 
@@ -347,7 +347,7 @@ const SellerDashboard = () => {
           <div className="modal" style={{ maxWidth: 480 }}>
             <div className="modal-header">
               <h2>Appraisal Offer for {activeOffer.model}</h2>
-              <button type="button" className="btn-close" onClick={() => setActiveOffer(null)}>✕</button>
+              <button type="button" className="btn-close" onClick={() => setActiveOffer(null)}>×</button>
             </div>
             <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div style={{ background: 'var(--bg-glass)', padding: '1.25rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
@@ -394,8 +394,8 @@ const SellerDashboard = () => {
         <div className="modal-backdrop" onClick={() => setActiveCounterOffer(null)}>
           <div className="modal" style={{ maxWidth: 520 }} onClick={e => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>⚠️ Counter-Offer for {activeCounterOffer.requestModel}</h2>
-              <button type="button" className="btn-close" onClick={() => setActiveCounterOffer(null)}>✕</button>
+              <h2>Counter-Offer for {activeCounterOffer.requestModel}</h2>
+              <button type="button" className="btn-close" onClick={() => setActiveCounterOffer(null)}>×</button>
             </div>
             <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div style={{ background: 'rgba(255, 179, 0, 0.08)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255, 179, 0, 0.25)', fontSize: '0.85rem' }}>
@@ -471,7 +471,7 @@ const SellerDashboard = () => {
             <form onSubmit={handleSaveProfile}>
               <div className="modal-header">
                 <h2>Seller Payout Details</h2>
-                <button type="button" className="btn-close" onClick={() => setShowProfile(false)}>✕</button>
+                <button type="button" className="btn-close" onClick={() => setShowProfile(false)}>×</button>
               </div>
               <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>

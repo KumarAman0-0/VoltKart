@@ -132,7 +132,7 @@ const NewSellRequest = () => {
                 marginBottom: '1rem',
               }}>
                 <div style={{ fontWeight: 700, color: 'var(--volt-success)', fontSize: '0.95rem' }}>
-                  💡 Is model ke liye ₹{upToPrice.toLocaleString('en-IN')} tak mil sakta hai
+                  Is model ke liye ₹{upToPrice.toLocaleString('en-IN')} tak mil sakta hai
                 </div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
                   * Asli price phone check karne ke baad pakka hota hai.
@@ -224,14 +224,14 @@ const NewSellRequest = () => {
                 <label className="form-label">Preferred Time Slot</label>
                 <select className="form-select" value={form.pickupSlot} onChange={set('pickupSlot')}>
                   <option value="">Select slot</option>
-                  <option value="morning">🌅 Morning (9 AM – 12 PM)</option>
-                  <option value="afternoon">☀️ Afternoon (12 PM – 3 PM)</option>
-                  <option value="evening">🌆 Evening (3 PM – 6 PM)</option>
+                  <option value="morning">Morning (9 AM – 12 PM)</option>
+                  <option value="afternoon">Afternoon (12 PM – 3 PM)</option>
+                  <option value="evening">Evening (3 PM – 6 PM)</option>
                 </select>
               </div>
             </div>
             <div className="alert alert-info" style={{ marginTop: '0.5rem', fontSize: '0.85rem' }}>
-              ℹ️ Condition, battery, IMEI, and locks — our agent will check everything on-spot. No need to describe them.
+              Condition, battery, IMEI, and locks — our agent will check everything on-spot. No need to describe them.
             </div>
           </div>
 
@@ -246,7 +246,7 @@ const NewSellRequest = () => {
           </div>
 
           <button type="submit" className="btn btn-primary btn-lg w-full" disabled={loading}>
-            {loading ? <span className="spinner" /> : '📦 Submit Sell Request'}
+            {loading ? <span className="spinner" /> : 'Submit Sell Request'}
           </button>
         </form>
       </div>

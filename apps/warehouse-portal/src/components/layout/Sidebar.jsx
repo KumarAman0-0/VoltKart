@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <span style={{ color: '#38bdf8' }}>⚡ VoltKart</span>
+        <span style={{ color: '#38bdf8' }}>VoltKart</span>
         <span style={{ fontSize: '0.7rem', display: 'block', color: '#94a3b8', fontWeight: 500, letterSpacing: '0.05em' }}>
           WAREHOUSE HUB
         </span>

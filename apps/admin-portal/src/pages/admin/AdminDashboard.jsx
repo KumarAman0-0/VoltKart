@@ -3,7 +3,7 @@ import DashboardLayout from '../../components/layout/DashboardLayout';
 import StatusBadge from '../../components/common/StatusBadge';
 import { adminAPI } from '../../api';
 import toast from 'react-hot-toast';
-import { BarChart3, Package, ShoppingCart, Users, TrendingUp, CheckCircle, UserX } from 'lucide-react';
+import { Package, Clock, Smartphone, ShoppingCart, DollarSign, Users } from 'lucide-react';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
@@ -19,12 +19,12 @@ const AdminDashboard = () => {
   if (loading) return <DashboardLayout><div className="page-loader"><div className="spinner" /></div></DashboardLayout>;
 
   const cards = [
-    { icon: '📦', label: 'Total Requests', value: stats?.totalRequests ?? 0, color: '#6c63ff' },
-    { icon: '⏳', label: 'Pending', value: stats?.pendingRequests ?? 0, color: '#ffa500' },
-    { icon: '📱', label: 'Live Devices', value: stats?.activeDevices ?? 0, color: '#00d4aa' },
-    { icon: '🛒', label: 'Total Orders', value: stats?.totalOrders ?? 0, color: '#2ed573' },
-    { icon: '💰', label: 'Revenue', value: `₹${(stats?.revenue ?? 0).toLocaleString('en-IN')}`, color: '#ff6b81' },
-    { icon: '👥', label: 'Users', value: stats?.totalUsers ?? 0, color: '#a29bfe' },
+    { Icon: Package, label: 'Total Requests', value: stats?.totalRequests ?? 0, color: '#6c63ff' },
+    { Icon: Clock, label: 'Pending', value: stats?.pendingRequests ?? 0, color: '#ffa500' },
+    { Icon: Smartphone, label: 'Live Devices', value: stats?.activeDevices ?? 0, color: '#00d4aa' },
+    { Icon: ShoppingCart, label: 'Total Orders', value: stats?.totalOrders ?? 0, color: '#2ed573' },
+    { Icon: DollarSign, label: 'Revenue', value: `₹${(stats?.revenue ?? 0).toLocaleString('en-IN')}`, color: '#ff6b81' },
+    { Icon: Users, label: 'Users', value: stats?.totalUsers ?? 0, color: '#a29bfe' },
   ];
 
   return (
@@ -36,15 +36,18 @@ const AdminDashboard = () => {
       <div className="page-body">
         {/* Stats */}
         <div className="grid-3" style={{ marginBottom: '2rem' }}>
-          {cards.map(c => (
-            <div key={c.label} className="stat-card">
-              <div className="stat-icon" style={{ background: `${c.color}20` }}>
-                <span style={{ fontSize: '1.3rem' }}>{c.icon}</span>
+          {cards.map(c => {
+            const IconComp = c.Icon;
+            return (
+              <div key={c.label} className="stat-card">
+                <div className="stat-icon" style={{ background: `${c.color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <IconComp size={22} color={c.color} />
+                </div>
+                <div className="stat-value" style={{ background: 'none', WebkitTextFillColor: c.color, fontSize: '1.75rem' }}>{c.value}</div>
+                <div className="stat-label">{c.label}</div>
               </div>
-              <div className="stat-value" style={{ background: 'none', WebkitTextFillColor: c.color, fontSize: '1.75rem' }}>{c.value}</div>
-              <div className="stat-label">{c.label}</div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Quick Actions */}

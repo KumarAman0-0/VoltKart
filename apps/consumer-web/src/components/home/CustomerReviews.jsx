@@ -9,7 +9,6 @@ const REVIEWS = [
     role: 'Parent of 8-year-old Aarav',
     edition: 'VoltKart Kids',
     editionColor: '#00d4aa',
-    editionIcon: '🧸',
     rating: 5,
     device: 'Pixel 6a · 128GB (Grade A+)',
     review: 'VoltKart Kids gave me total peace of mind. Aarav cannot download YouTube Shorts or addictive games without my approval, and the bedtime lock turns the screen off at 8:30 PM automatically without daily arguments.',
@@ -21,7 +20,6 @@ const REVIEWS = [
     role: 'Principal Security Engineer',
     edition: 'VoltKart Adult',
     editionColor: '#2ed573',
-    editionIcon: '💼',
     rating: 5,
     device: 'Pixel 7 · 128GB (Grade A+)',
     review: 'Radical data minimization at its best. Zero telemetry beacons sent to Google, sandboxed permissions, and clean hardware root verified with Titan M2. The device arrived looking brand new with 94% battery capacity.',
@@ -33,7 +31,6 @@ const REVIEWS = [
     role: 'Class 11 Student',
     edition: 'VoltKart Teen',
     editionColor: '#6c63ff',
-    editionIcon: '🎧',
     rating: 5,
     device: 'Pixel 6 · 128GB (Grade A)',
     review: 'Study Focus mode during term exams blocks Instagram and gaming automatically. What I respect most is transparency—my parents and I agreed on the rules together, and I can see exactly what limits are active.',
@@ -45,7 +42,6 @@ const REVIEWS = [
     role: 'Grandparent',
     edition: 'VoltKart Senior',
     editionColor: '#ffa502',
-    editionIcon: '👓',
     rating: 5,
     device: 'Pixel 7a · 128GB (Grade A+)',
     review: 'Large high-contrast tiles and one-tap video calling to my daughter. No pop-ups, no spam notifications, and the dedicated red SOS button with GPS sharing gives my family total reassurance.',
@@ -57,7 +53,6 @@ const REVIEWS = [
     role: 'Cardiologist',
     edition: 'VoltKart Adult',
     editionColor: '#2ed573',
-    editionIcon: '💼',
     rating: 5,
     device: 'Pixel 8 · 128GB (Grade A+)',
     review: 'The segregated Work and Personal profile keeps hospital records and patient chats strictly isolated. The 6-month warranty and NIST 800-88 storage wipe certificate gave me the confidence to buy refurbished.',
@@ -147,7 +142,6 @@ const CustomerReviews = () => {
                       color: rev.editionColor,
                     }}
                   >
-                    <span>{rev.editionIcon}</span>
                     <span>{rev.edition}</span>
                   </span>
                   <span className="avrel-review-hardware-tag">

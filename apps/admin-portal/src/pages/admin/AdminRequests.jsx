@@ -115,13 +115,13 @@ const AdminRequests = () => {
             className={`btn ${activeTab === 'requests' ? 'btn-primary' : 'btn-ghost'}`}
             onClick={() => setActiveTab('requests')}
           >
-            📋 Sell Requests ({requests.length})
+            Sell Requests ({requests.length})
           </button>
           <button
             className={`btn ${activeTab === 'counter-offers' ? 'btn-accent' : 'btn-ghost'}`}
             onClick={() => setActiveTab('counter-offers')}
           >
-            ⚠️ Warehouse Counter-Offers ({counterOffers.filter(c => c.status === 'pending_admin').length} pending)
+            Warehouse Counter-Offers ({counterOffers.filter(c => c.status === 'pending_admin').length} pending)
           </button>
         </div>
 
@@ -254,7 +254,7 @@ const AdminRequests = () => {
                             disabled={submitting}
                             onClick={() => handleApproveCounterOffer(co._id)}
                           >
-                            ✓ Approve & Send to Seller
+                            Approve & Send to Seller
                           </button>
                         ) : (
                           <span className="text-xs text-muted">Sent to Seller</span>
@@ -274,7 +274,7 @@ const AdminRequests = () => {
             <div className="modal" style={{ maxWidth: 580 }} onClick={e => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 className="modal-title">{selected.model} — {selected.seller?.name}</h2>
-                <button className="modal-close" onClick={() => setSelected(null)}>✕</button>
+                <button className="modal-close" onClick={() => setSelected(null)}>×</button>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.5rem' }}>
@@ -286,7 +286,7 @@ const AdminRequests = () => {
                   ['Location', `${selected.address?.city || ''}, ${selected.address?.state || ''}`],
                   ['Pickup Date', selected.pickupDate ? new Date(selected.pickupDate).toLocaleDateString('en-IN') : 'Flexible'],
                   ['Pickup Slot', selected.pickupSlot ? selected.pickupSlot.charAt(0).toUpperCase() + selected.pickupSlot.slice(1) : 'Standard'],
-                  ['SLA Payment', selected.status === 'paid' ? 'Paid ✓' : 'Disburses after Warehouse Engineer Check'],
+                  ['SLA Payment', selected.status === 'paid' ? 'Paid' : 'Disburses after Warehouse Engineer Check'],
                 ].map(([label, value]) => (
                   <div key={label} style={{ background: 'var(--bg-glass)', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
                     <div className="text-xs text-muted">{label}</div>

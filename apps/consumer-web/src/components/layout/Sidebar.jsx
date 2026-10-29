@@ -48,7 +48,7 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-logo">⚡ VoltKart</div>
+      <div className="sidebar-logo">VoltKart</div>
 
       <div style={{ padding: '0 1.5rem', marginBottom: '1.5rem' }}>
         <div style={{

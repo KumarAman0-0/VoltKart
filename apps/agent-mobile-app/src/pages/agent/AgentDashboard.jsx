@@ -21,8 +21,8 @@ const AgentDashboard = () => {
   const done = pickups.filter(p => ['picked_up', 'rejected_at_pickup', 'inspected', 'declined'].includes(p.status));
 
   const statusLabel = (status) => {
-    if (status === 'on_the_way') return '🚗 On the Way';
-    if (status === 'inspected') return '🔍 Inspected';
+    if (status === 'on_the_way') return 'On the Way';
+    if (status === 'inspected') return 'Inspected';
     return status.replace(/_/g, ' ');
   };
 
@@ -39,7 +39,7 @@ const AgentDashboard = () => {
             {pending.length > 0 && (
               <div style={{ marginBottom: '2rem' }}>
                 <h2 style={{ fontSize: '1rem', marginBottom: '1rem', color: 'var(--volt-warning)' }}>
-                  ⏳ Pending Pickups ({pending.length})
+                  Pending Pickups ({pending.length})
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {pending.map(p => (
@@ -56,8 +56,8 @@ const AgentDashboard = () => {
                           <ClipboardList size={16} /> Start Inspection
                         </button>
                       </div>
-                      <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: 'var(--bg-glass)', borderRadius: 'var(--radius-md)', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                        📍 {p.address?.street}, {p.address?.city}, {p.address?.state} — {p.address?.pincode}
+                      <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: 'var(--bg-glass)', borderRadius: 'var(--radius-md)', fontSize: '0.875rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <MapPin size={14} style={{ flexShrink: 0 }} /> {p.address?.street}, {p.address?.city}, {p.address?.state} — {p.address?.pincode}
                       </div>
                       {p.estimatedMax && (
                         <div style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>

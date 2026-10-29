@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { shopAPI } from '../../api';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import StatusBadge from '../../components/common/StatusBadge';
-import { Package, MapPin, CreditCard, ChevronRight, Download, ShieldCheck } from 'lucide-react';
+import { Package, MapPin, CreditCard, ChevronRight, Download, ShieldCheck, Smartphone, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -44,7 +44,9 @@ const MyOrdersPage = () => {
                     {order.device?.photos?.[0] ? (
                       <img src={order.device.photos[0]} alt={order.device.model} style={{ width: 72, height: 72, objectFit: 'cover', borderRadius: 'var(--radius-md)', background: 'var(--bg-secondary)' }} />
                     ) : (
-                      <div style={{ width: 72, height: 72, background: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>📱</div>
+                      <div style={{ width: 72, height: 72, background: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
+                        <Smartphone size={32} />
+                      </div>
                     )}
                     <div>
                       <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>{order.device?.listingTitle || order.device?.model}</h3>
@@ -84,7 +86,7 @@ const MyOrdersPage = () => {
                               fontSize: '0.7rem', color: done ? '#fff' : 'var(--text-muted)',
                               fontWeight: 700, zIndex: 1, position: 'relative',
                             }}>
-                              {done ? '✓' : i + 1}
+                              {done ? <Check size={14} /> : i + 1}
                             </div>
                             <div style={{ fontSize: '0.65rem', color: done ? 'var(--text-primary)' : 'var(--text-muted)', marginTop: '0.3rem', textTransform: 'capitalize', textAlign: 'center' }}>
                               {step}
@@ -106,8 +108,8 @@ const MyOrdersPage = () => {
                 )}
 
                 {order.trackingNumber && (
-                  <div className="alert alert-info" style={{ marginTop: '1rem', marginBottom: 0 }}>
-                    📦 Tracking: {order.trackingNumber} via {order.courierName}
+                  <div className="alert alert-info" style={{ marginTop: '1rem', marginBottom: 0, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <Package size={15} /> Tracking: {order.trackingNumber} via {order.courierName}
                   </div>
                 )}
 

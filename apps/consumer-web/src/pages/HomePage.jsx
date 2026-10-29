@@ -10,7 +10,8 @@ import DropSubscribeCard from '../components/home/DropSubscribeCard';
 import {
   Shield, ArrowDown, ArrowRight, CheckCircle2,
   Users, Lock, Sparkles, HeartHandshake, Battery,
-  RefreshCw, Check, Smartphone, Tablet
+  RefreshCw, Check, Smartphone, Tablet, Headphones,
+  Briefcase, Heart, Target, Leaf
 } from 'lucide-react';
 
 const EDITIONS = [
@@ -18,7 +19,7 @@ const EDITIONS = [
     id: 'kids',
     name: 'VoltKart Kids',
     age: 'Ages 5 to 12',
-    icon: '🧸',
+    Icon: Sparkles,
     pitch: 'A phone that a child can use safely, and a parent can trust.',
     features: [
       'Playful, big-icon home screen',
@@ -34,7 +35,7 @@ const EDITIONS = [
     id: 'teen',
     name: 'VoltKart Teen',
     age: 'Ages 13 to 17',
-    icon: '🎧',
+    Icon: Headphones,
     pitch: 'More freedom, with guardrails that teenagers can accept.',
     features: [
       'Standard home screen with more apps',
@@ -50,7 +51,7 @@ const EDITIONS = [
     id: 'adult',
     name: 'VoltKart Adult',
     age: 'Working Professionals',
-    icon: '💼',
+    Icon: Briefcase,
     pitch: 'A clean, powerful phone for people who want control.',
     features: [
       'Full app freedom & maximum privacy',
@@ -66,7 +67,7 @@ const EDITIONS = [
     id: 'senior',
     name: 'VoltKart Senior',
     age: 'Parents & Grandparents',
-    icon: '👓',
+    Icon: Heart,
     pitch: 'Simple, large, and calm. Built for parents and grandparents.',
     features: [
       'Large text & clear high-contrast tiles',
@@ -179,7 +180,7 @@ const HomePage = () => {
               >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                    <span style={{ fontSize: '2rem' }}>{ed.icon}</span>
+                    <div style={{ color: ed.color }}><ed.Icon size={32} /></div>
                     <span style={{
                       fontFamily: 'DM Mono',
                       fontSize: '0.68rem',
@@ -379,28 +380,32 @@ const HomePage = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.75rem' }}>
             {[
               {
-                icon: '🔐',
+                Icon: Lock,
+                color: '#2ed573',
                 title: 'Private by default',
                 desc: 'Location, camera, microphone, contacts and storage are off until you permit them. Zero pre-installed telemetry trackers.',
               },
               {
-                icon: '🎯',
+                Icon: Target,
+                color: '#6c63ff',
                 title: 'Made for each age',
                 desc: 'From playful big icons for kids to large high-contrast tiles for grandparents, each edition matches the person holding it.',
               },
               {
-                icon: '🌱',
+                Icon: Leaf,
+                color: '#00d4aa',
                 title: 'A second life for hardware',
                 desc: 'A phone that still works should never become waste. We revitalize great hardware with clean, fast software.',
               },
               {
-                icon: '🛡️',
+                Icon: Shield,
+                color: '#ffa502',
                 title: 'Warranty on every device',
                 desc: 'Every phone passes 8-point hardware testing and comes backed by the official VoltKart repair & replacement warranty.',
               },
             ].map(col => (
               <div key={col.title} style={{ background: 'var(--avrel-card-bg)', border: '1px solid var(--avrel-border)', borderRadius: '18px', padding: '2.25rem 2rem' }}>
-                <div style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{col.icon}</div>
+                <div style={{ color: col.color, marginBottom: '1rem' }}><col.Icon size={32} /></div>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: '0 0 0.5rem 0', color: 'var(--avrel-text)' }}>
                   {col.title}
                 </h3>
@@ -493,9 +498,9 @@ const HomePage = () => {
               </p>
 
               <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', fontFamily: 'DM Mono', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.6)' }}>
-                <span>✓ Any Brand Accepted</span>
-                <span>✓ Zero Data Leak Guarantee</span>
-                <span>✓ Direct UPI/Bank Payout</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}><Check size={14} color="#20bf6b" /> Any Brand Accepted</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}><Check size={14} color="#20bf6b" /> Zero Data Leak Guarantee</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}><Check size={14} color="#20bf6b" /> Direct UPI/Bank Payout</span>
               </div>
             </div>
 

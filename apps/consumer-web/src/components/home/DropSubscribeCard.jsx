@@ -13,9 +13,7 @@ const DropSubscribeCard = () => {
       return;
     }
     setSubscribed(true);
-    toast.success('You have been added to the Priority Hardware Drop list!', {
-      icon: '🔔',
-    });
+    toast.success('You have been added to the Priority Hardware Drop list!');
   };
 
   return (
@@ -68,7 +66,7 @@ const DropSubscribeCard = () => {
             )}
 
             <div className="avrel-drop-disclaimer">
-              🔒 Zero spam. Unsubscribe at any time. Segregated subscriber database.
+              Zero spam. Unsubscribe at any time. Segregated subscriber database.
             </div>
           </div>
         </div>

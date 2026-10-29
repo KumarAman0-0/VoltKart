@@ -19,7 +19,7 @@ const NextBatchDrop = () => {
       return;
     }
     setSubscribed(true);
-    toast.success('🎉 You are on the VIP Drop list! Allocation notification confirmed.');
+    toast.success('You are on the VIP Drop list! Allocation notification confirmed.');
   };
 
   return (
