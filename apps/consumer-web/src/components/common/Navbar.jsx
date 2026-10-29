@@ -157,35 +157,39 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Action Buttons: Wishlist & Bag */}
+            {/* Action Buttons: Wishlist & Bag (Hidden on Home Page) */}
             <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-              {/* Wishlist Drawer Trigger */}
-              <button
-                type="button"
-                className="avrel-nav-icon-btn"
-                onClick={() => setIsWishlistOpen(true)}
-                title="Wishlist (Saved Devices)"
-                aria-label="Wishlist"
-              >
-                <Heart size={18} color="#ffffff" strokeWidth={2} fill={wishlistCount > 0 ? '#ff4757' : 'none'} />
-                {wishlistCount > 0 && (
-                  <span className="avrel-icon-badge badge-wishlist">{wishlistCount}</span>
-                )}
-              </button>
+              {location.pathname !== '/' && (
+                <>
+                  {/* Wishlist Drawer Trigger */}
+                  <button
+                    type="button"
+                    className="avrel-nav-icon-btn"
+                    onClick={() => setIsWishlistOpen(true)}
+                    title="Wishlist (Saved Devices)"
+                    aria-label="Wishlist"
+                  >
+                    <Heart size={18} color="#ffffff" strokeWidth={2} fill={wishlistCount > 0 ? '#ff4757' : 'none'} />
+                    {wishlistCount > 0 && (
+                      <span className="avrel-icon-badge badge-wishlist">{wishlistCount}</span>
+                    )}
+                  </button>
 
-              {/* Cart Drawer Trigger */}
-              <button
-                type="button"
-                className="avrel-nav-icon-btn"
-                onClick={() => setIsCartOpen(true)}
-                title="Your Bag"
-                aria-label="Cart"
-              >
-                <ShoppingBag size={18} color="#ffffff" strokeWidth={2} />
-                {cartCount > 0 && (
-                  <span className="avrel-icon-badge badge-cart">{cartCount}</span>
-                )}
-              </button>
+                  {/* Cart Drawer Trigger */}
+                  <button
+                    type="button"
+                    className="avrel-nav-icon-btn"
+                    onClick={() => setIsCartOpen(true)}
+                    title="Your Bag"
+                    aria-label="Cart"
+                  >
+                    <ShoppingBag size={18} color="#ffffff" strokeWidth={2} />
+                    {cartCount > 0 && (
+                      <span className="avrel-icon-badge badge-cart">{cartCount}</span>
+                    )}
+                  </button>
+                </>
+              )}
 
               {/* User Authentication state */}
               {user ? (
