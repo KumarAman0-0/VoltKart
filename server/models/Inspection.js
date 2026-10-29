@@ -105,8 +105,6 @@ const inspectionSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 inspectionSchema.index({ diagnosticCode: 1 });
-
-inspectionSchema.index({ sellRequest: 1 });
 inspectionSchema.index({ agent: 1, createdAt: -1 });
 
 const { resolveModel } = require('../db/getModel');
