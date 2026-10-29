@@ -129,12 +129,14 @@ const Hero3DPhone = () => {
           }}
         >
           {/* =========================================================
-              LAYER 1: BACK CHASSIS & ALUMINIUM UNIBODY (Z = -60px)
+              LAYER 1: BACK CHASSIS & ALUMINIUM UNIBODY (Facing -Z)
               ========================================================= */}
           <div
             className="hero-phone-slab slab-back"
             style={{
-              transform: viewMode === 'exploded' ? 'translateZ(-75px) translateY(35px)' : 'translateZ(-10px)',
+              transform: viewMode === 'exploded' 
+                ? 'rotateY(180deg) translateZ(85px) translateY(40px)' 
+                : 'rotateY(180deg) translateZ(10px)',
               opacity: viewMode === 'exploded' ? 0.95 : 1,
             }}
           >
@@ -154,8 +156,6 @@ const Hero3DPhone = () => {
                 <span>VoltKart</span>
                 <span className="slab-back-sub">PIXEL 7 · RECYCLED AL</span>
               </div>
-              <div className="slab-back-antenna-top" />
-              <div className="slab-back-antenna-bottom" />
             </div>
             {viewMode === 'exploded' && (
               <span className="slab-floating-tag tag-chassis">06 · Aerospace Aluminium</span>
@@ -163,13 +163,47 @@ const Hero3DPhone = () => {
           </div>
 
           {/* =========================================================
-              LAYER 2: CERTIFIED LI-PO BATTERY PACK (Z = -30px)
+              SOLID MIDFRAME CORE & 3D METAL EDGE RAILS (In Assembled Mode)
+              ========================================================= */}
+          {viewMode === 'assembled' && (
+            <>
+              {/* Opaque solid core inside the phone */}
+              <div className="phone-solid-core" />
+
+              {/* 3D Side Rails connecting front and back */}
+              <div className="phone-edge-rail rail-left">
+                <div className="phone-antenna-notch" style={{ top: 35 }} />
+                <div className="phone-antenna-notch" style={{ bottom: 35 }} />
+              </div>
+
+              <div className="phone-edge-rail rail-right">
+                <div className="phone-antenna-notch" style={{ top: 35 }} />
+                <div className="hw-button-power" />
+                <div className="hw-button-volume" />
+                <div className="phone-antenna-notch" style={{ bottom: 35 }} />
+              </div>
+
+              <div className="phone-edge-rail rail-top">
+                <div className="phone-antenna-notch" style={{ left: 35, width: 2, height: '100%' }} />
+                <div className="phone-antenna-notch" style={{ right: 35, width: 2, height: '100%' }} />
+              </div>
+
+              <div className="phone-edge-rail rail-bottom">
+                <div className="phone-antenna-notch" style={{ left: 35, width: 2, height: '100%' }} />
+                <div className="hw-port-usbc" />
+                <div className="phone-antenna-notch" style={{ right: 35, width: 2, height: '100%' }} />
+              </div>
+            </>
+          )}
+
+          {/* =========================================================
+              LAYER 2: CERTIFIED LI-PO BATTERY PACK (Z = -40px)
               ========================================================= */}
           {viewMode === 'exploded' && (
             <div
               className="hero-phone-slab slab-battery"
               style={{
-                transform: 'translateZ(-35px) translateY(18px)',
+                transform: 'translateZ(-40px) translateY(20px)',
               }}
             >
               <div className="slab-battery-inner">
@@ -187,7 +221,7 @@ const Hero3DPhone = () => {
             <div
               className="hero-phone-slab slab-pcb"
               style={{
-                transform: 'translateZ(10px) translateY(0px)',
+                transform: 'translateZ(0px)',
               }}
             >
               <div className="slab-pcb-inner">
@@ -205,13 +239,13 @@ const Hero3DPhone = () => {
           )}
 
           {/* =========================================================
-              LAYER 4: COPPER VAPOR CHAMBER (Z = 40px)
+              LAYER 4: COPPER VAPOR CHAMBER (Z = 45px)
               ========================================================= */}
           {viewMode === 'exploded' && (
             <div
               className="hero-phone-slab slab-copper"
               style={{
-                transform: 'translateZ(45px) translateY(-18px)',
+                transform: 'translateZ(45px) translateY(-20px)',
               }}
             >
               <div className="slab-copper-inner">
@@ -223,12 +257,14 @@ const Hero3DPhone = () => {
           )}
 
           {/* =========================================================
-              LAYER 5: FRONT OLED SCREEN & OLEOPHOBIC GLASS (Z = +80px)
+              LAYER 5: FRONT OLED SCREEN & OLEOPHOBIC GLASS (Facing +Z)
               ========================================================= */}
           <div
             className="hero-phone-slab slab-front"
             style={{
-              transform: viewMode === 'exploded' ? 'translateZ(85px) translateY(-35px)' : 'translateZ(12px)',
+              transform: viewMode === 'exploded' 
+                ? 'translateZ(90px) translateY(-40px)' 
+                : 'translateZ(10px)',
             }}
           >
             {/* Phone Front Glass Frame */}

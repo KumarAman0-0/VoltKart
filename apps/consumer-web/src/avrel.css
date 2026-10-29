@@ -1378,7 +1378,7 @@
 /* 3D Viewport Stage */
 .hero-3d-viewport {
   position: relative;
-  height: 440px;
+  height: 520px;
   perspective: 1200px;
   display: flex;
   align-items: center;
@@ -1390,28 +1390,30 @@
 
 .hero-3d-phone-rig {
   position: relative;
-  width: 230px;
-  height: 380px;
+  width: 240px;
+  height: 480px;
   transform-style: preserve-3d;
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-/* Phone Slabs */
+/* Phone Slabs Base */
 .hero-phone-slab {
   position: absolute;
   inset: 0;
-  border-radius: 38px;
+  border-radius: 40px;
   transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-  box-shadow: 0 16px 40px rgba(18, 20, 23, 0.22);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
 }
 
-/* Back Slab (Chassis & Visor) */
+/* Back Slab (Chassis & Visor) - Rotated 180deg to face rear */
 .slab-back {
-  background: linear-gradient(145deg, #282c34 0%, #17191f 100%);
-  border: 2px solid #4a5160;
+  background: linear-gradient(155deg, #2a2f3a 0%, #15181f 100%);
+  border: 2px solid #3d4554;
   overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .slab-back-chassis {
@@ -1421,29 +1423,30 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0 2rem;
 }
 
 .slab-back-visor {
   width: 100%;
-  height: 64px;
-  background: #20232b;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  height: 68px;
+  background: #1b1e26;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.22);
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 1.2rem;
-  margin-top: 1.5rem;
+  padding: 0 1.25rem;
+  margin-top: 2rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
 .slab-visor-lens {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #2a3545 0%, #080b10 80%);
-  border: 2px solid #5a6475;
-  box-shadow: inset 0 0 8px #000, 0 2px 6px rgba(0, 0, 0, 0.5);
+  background: radial-gradient(circle at 35% 35%, #2a3545 0%, #06090e 80%);
+  border: 2px solid #636e82;
+  box-shadow: inset 0 0 10px #000, 0 3px 8px rgba(0, 0, 0, 0.6);
   position: relative;
   display: flex;
   align-items: center;
@@ -1452,48 +1455,157 @@
 
 .visor-reflection {
   position: absolute;
-  top: 3px;
-  left: 5px;
-  width: 10px;
-  height: 6px;
+  top: 4px;
+  left: 6px;
+  width: 12px;
+  height: 7px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.45);
   transform: rotate(-30deg);
 }
 
 .visor-lens-text {
   font-family: 'DM Mono', monospace;
-  font-size: 0.5rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.52rem;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 700;
 }
 
 .slab-visor-flash {
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: #ffeaa7;
   border: 1px solid #fdcb6e;
-  box-shadow: 0 0 6px rgba(253, 203, 110, 0.6);
+  box-shadow: 0 0 8px rgba(253, 203, 110, 0.7);
 }
 
 .slab-back-logo {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
   font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4);
   letter-spacing: -0.02em;
 }
 
 .slab-back-sub {
   font-family: 'DM Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================================================
+   SOLID UNIBODY CORE & 3D METAL EDGE RAILS (Eliminates Hollow Void)
+   ========================================================= */
+.phone-solid-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  background: #14161c;
+  transform: translateZ(0px);
+  border: 1px solid #232833;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 0 20px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.phone-edge-rail {
+  position: absolute;
+  background: linear-gradient(180deg, #2a2f3a 0%, #171920 50%, #2a2f3a 100%);
+  border: 1px solid #3c4454;
+  box-sizing: border-box;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: opacity 0.35s ease;
+}
+
+/* Left Rail */
+.phone-edge-rail.rail-left {
+  top: 40px;
+  bottom: 40px;
+  left: -10px;
+  width: 20px;
+  transform: rotateY(-90deg);
+}
+
+/* Right Rail (With Volume & Power Buttons) */
+.phone-edge-rail.rail-right {
+  top: 40px;
+  bottom: 40px;
+  right: -10px;
+  width: 20px;
+  transform: rotateY(90deg);
+}
+
+/* Top Rail */
+.phone-edge-rail.rail-top {
+  left: 40px;
+  right: 40px;
+  top: -10px;
+  height: 20px;
+  transform: rotateX(90deg);
+  background: linear-gradient(90deg, #2a2f3a 0%, #171920 50%, #2a2f3a 100%);
+}
+
+/* Bottom Rail (With USB-C & Speakers) */
+.phone-edge-rail.rail-bottom {
+  left: 40px;
+  right: 40px;
+  bottom: -10px;
+  height: 20px;
+  transform: rotateX(-90deg);
+  background: linear-gradient(90deg, #2a2f3a 0%, #171920 50%, #2a2f3a 100%);
+}
+
+/* Physical Hardware Buttons on Right Edge */
+.hw-button-power {
+  position: absolute;
+  top: 45px;
+  left: 3px;
+  right: 3px;
+  height: 32px;
+  background: linear-gradient(180deg, #4f5869 0%, #2b303b 100%);
+  border-radius: 3px;
+  border: 1px solid #6c788e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.hw-button-volume {
+  position: absolute;
+  top: 95px;
+  left: 3px;
+  right: 3px;
+  height: 60px;
+  background: linear-gradient(180deg, #4f5869 0%, #2b303b 100%);
+  border-radius: 3px;
+  border: 1px solid #6c788e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* USB-C Port on Bottom */
+.hw-port-usbc {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  border-radius: 4px;
+  background: #000000;
+  border: 1px solid #3c4454;
+}
+
+/* Antenna Lines */
+.phone-antenna-notch {
+  position: absolute;
+  background: #0a0c10;
+  width: 100%;
+  height: 2px;
 }
 
 /* Exploded Middle Slabs */
@@ -1611,11 +1723,15 @@
   margin-top: 0.2rem;
 }
 
-/* Front Slab (OLED Screen & Frame) */
+/* =========================================================
+   FRONT SLAB & OLED DISPLAY
+   ========================================================= */
 .slab-front {
-  background: #000000;
-  border: 2px solid #23272c;
+  background: #0a0c10;
+  border: 2px solid #23272e;
   overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .phone-screen-frame {
@@ -1623,19 +1739,19 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  padding: 0.75rem 0.85rem;
+  padding: 0.85rem 0.95rem;
   box-sizing: border-box;
-  background: linear-gradient(180deg, #101216 0%, #0a0b0d 100%);
-  border-radius: 36px;
+  background: linear-gradient(180deg, #0e1014 0%, #07080a 100%);
+  border-radius: 38px;
 }
 
 .phone-punchhole {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 2px auto 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin: 2px auto 8px;
   z-index: 5;
 }
 
@@ -1644,8 +1760,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 55%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+  height: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 55%);
   pointer-events: none;
   z-index: 4;
 }
@@ -1655,10 +1771,10 @@
   justify-content: space-between;
   align-items: center;
   font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  color: rgba(255, 255, 255, 0.7);
-  padding: 0 0.35rem 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0 0.4rem 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .phone-carrier {
@@ -1673,11 +1789,11 @@
 .phone-icons {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
 .phone-battery-lvl {
-  font-size: 0.58rem;
+  font-size: 0.62rem;
 }
 
 .phone-oled-content {
@@ -1685,81 +1801,77 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.85rem 0.25rem 0.4rem;
+  padding: 1.1rem 0.35rem 0.5rem;
   z-index: 3;
 }
 
 .phone-edition-hero-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
-  background: rgba(0, 0, 0, 0.4);
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 9999px;
   border: 1px solid;
   align-self: center;
 }
 
 .phone-ed-dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
 }
 
 .phone-ed-name {
   font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: -0.01em;
 }
 
 .phone-ed-target-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.65);
   text-align: center;
   letter-spacing: 0.08em;
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
 }
 
 .phone-launcher-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-  margin: 0.75rem 0;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
 }
 
 .phone-app-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
 .phone-app-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: transform 0.18s ease;
 }
 
 .phone-app-tile:hover .phone-app-icon-wrap {
   transform: scale(1.08);
 }
 
-.phone-app-emoji {
-  font-size: 1.25rem;
-}
-
 .phone-app-label {
   font-family: 'Inter', sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.64rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
 }
 
@@ -1767,12 +1879,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
   border: 1px solid;
   font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   color: #ffffff;
   text-align: center;
   letter-spacing: 0.04em;
@@ -1781,7 +1893,7 @@
 .phone-bezel-rim {
   position: absolute;
   inset: 2px;
-  border-radius: 36px;
+  border-radius: 38px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   pointer-events: none;
 }
@@ -1822,13 +1934,13 @@
 }
 
 .chip-left {
-  top: 18%;
-  left: -15px;
+  top: 22%;
+  left: -20px;
 }
 
 .chip-right {
-  bottom: 22%;
-  right: -15px;
+  bottom: 25%;
+  right: -20px;
 }
 
 .chip-title {
@@ -1864,8 +1976,8 @@
 
 .hero-3d-edition-pills {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
 }
 
 .hero-3d-ed-btn {
@@ -1908,11 +2020,11 @@
 
 @media (max-width: 900px) {
   .hero-3d-viewport {
-    height: 380px;
+    height: 420px;
   }
   .hero-3d-phone-rig {
     width: 200px;
-    height: 340px;
+    height: 400px;
   }
   .chip-left, .chip-right {
     display: none;
