@@ -13,7 +13,7 @@ const POPULAR_SEARCHES = [
   { model: 'Pixel 7', sub: 'Flagship Grade A+ · GrapheneOS', link: '/shop?model=Pixel+7' },
   { model: 'Pixel 6a', sub: 'Best for Kids & Teen Edition', link: '/shop?model=Pixel+6a' },
   { model: 'VoltKart Kids', sub: 'Ages 5–12 · Safe Launcher', link: '/editions#kids' },
-  { model: 'VoltKart Senior', sub: 'High Contrast · SOS Button', link: '/editions#senior' },
+  { model: 'VoltKart Teen', sub: 'Ages 13–17 · Study Focus Mode', link: '/editions#teen' },
 ];
 
 const Navbar = () => {

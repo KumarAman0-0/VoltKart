@@ -16,7 +16,7 @@ const AboutPage = () => {
             Made for the person who holds it.
           </h1>
           <p className="avrel-section-desc" style={{ maxWidth: '680px', margin: '0 auto' }}>
-            VoltKart buys used phones and tablets from people, gives them a fresh start with our own custom operating system, and sells them to buyers who choose the version that fits who will use the device: a child, a teenager, an adult or a senior.
+            VoltKart buys used phones and tablets from people, gives them a fresh start with our own custom operating system, and sells them to buyers who choose the version that fits who will use the device: a child or a teenager.
           </p>
         </div>
       </section>
@@ -46,7 +46,7 @@ const AboutPage = () => {
               {
                 num: '03',
                 title: 'Different ages need different software.',
-                desc: 'A child, a teenager, an adult and a grandparent do not need the same phone. They should not be forced into the same one-size-fits-all software.',
+                desc: 'A child and a teenager do not need the same phone. They should not be forced into the same one-size-fits-all software.',
               },
               {
                 num: '04',
@@ -98,7 +98,7 @@ const AboutPage = () => {
                 <h3 style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0 }}>2. One-Size-Fits-All Software</h3>
               </div>
               <p style={{ color: 'var(--avrel-text-muted)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
-                A phone built for adults is handed to a seven-year-old. A phone packed with confusing apps is handed to a grandparent who only wants to call and video chat. Parents then have to bolt on separate apps to control what the phone does.
+                Unfiltered open internet access without guardrails is handed to a seven-year-old. Parents then have to struggle to bolt on separate third-party apps to control screen time and content. VoltKart solves this at the operating system root.
               </p>
             </div>
 

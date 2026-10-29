@@ -34,36 +34,10 @@ const EDITIONS_PREVIEW = {
     ],
     badge: 'Study Focus Active · Shared Wellbeing',
   },
-  adult: {
-    name: 'VoltKart Adult',
-    tag: 'Professionals',
-    color: '#2ed573',
-    clock: '09:15',
-    apps: [
-      { name: 'Work Profile', Icon: Briefcase, bg: '#23272c' },
-      { name: 'Encrypted Vault', Icon: Key, bg: '#2ed573' },
-      { name: 'Signal', Icon: Send, bg: '#0094f7' },
-      { name: 'Browser (Shield)', Icon: Globe, bg: '#ffa502' },
-    ],
-    badge: 'Zero Telemetry · Work Segregation',
-  },
-  senior: {
-    name: 'VoltKart Senior',
-    tag: 'Parents & Grandparents',
-    color: '#ffa502',
-    clock: '11:20',
-    apps: [
-      { name: 'Family Call', Icon: Users, bg: '#20bf6b' },
-      { name: 'Emergency SOS', Icon: AlertOctagon, bg: '#eb3b5a' },
-      { name: 'Photos', Icon: Image, bg: '#ffa502' },
-      { name: 'Doctor', Icon: HeartPulse, bg: '#0094f7' },
-    ],
-    badge: 'Extra Large Tiles · Anti-Scam Shield',
-  },
 };
 
 const Hero3DPhone = () => {
-  const [activeEdition, setActiveEdition] = useState('adult');
+  const [activeEdition, setActiveEdition] = useState('kids');
   const [viewMode, setViewMode] = useState('assembled'); // 'assembled' | 'exploded'
   const [isAutoSpinning, setIsAutoSpinning] = useState(false);
   const [mouseRot, setMouseRot] = useState({ x: 8, y: -16 });

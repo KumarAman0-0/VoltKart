@@ -9,11 +9,11 @@ const FAQS = [
     items: [
       {
         q: 'What is VoltKart?',
-        a: 'A marketplace for refurbished phones and tablets that run our own custom operating system, in an edition made specifically for the person who will use it: Kids, Teen, Adult or Senior.',
+        a: 'A marketplace for refurbished phones and tablets that run our own custom operating system, in an edition made specifically for the person who will use it: Kids or Teen.',
       },
       {
         q: 'Which edition should I choose?',
-        a: 'Pick the one that matches the person who will use the phone: Kids for young children (ages 5–12), Teen for teenagers (13–17), Adult for most adults, and Senior for people who want a calm, simple phone with large tiles.',
+        a: 'Pick the one that matches the person who will use the phone: Kids for young children (ages 5–12) and Teen for teenagers (ages 13–17).',
       },
       {
         q: 'Can I change the edition later?',
@@ -38,7 +38,7 @@ const FAQS = [
       },
       {
         q: 'Can I install my favourite apps?',
-        a: 'On VoltKart Adult, yes—you have full app freedom. On Kids and Teen, apps are approved by the parent. Senior keeps the phone simple, and trusted family members can assist with setup remotely.',
+        a: 'On Kids and Teen editions, apps are safely approved by the parent or guardian via the Guardian Dashboard, keeping screen time healthy and safe.',
       },
       {
         q: 'What is the warranty?',

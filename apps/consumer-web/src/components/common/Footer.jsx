@@ -94,8 +94,6 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.88rem' }}>
               <li><Link to="/editions#kids" style={{ color: 'var(--avrel-text-muted)', textDecoration: 'none' }}>VoltKart Kids (5–12)</Link></li>
               <li><Link to="/editions#teen" style={{ color: 'var(--avrel-text-muted)', textDecoration: 'none' }}>VoltKart Teen (13–17)</Link></li>
-              <li><Link to="/editions#adult" style={{ color: 'var(--avrel-text-muted)', textDecoration: 'none' }}>VoltKart Adult</Link></li>
-              <li><Link to="/editions#senior" style={{ color: 'var(--avrel-text-muted)', textDecoration: 'none' }}>VoltKart Senior</Link></li>
             </ul>
           </div>
 

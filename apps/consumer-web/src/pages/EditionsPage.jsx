@@ -69,63 +69,6 @@ const EDITIONS_DATA = {
       { title: 'Location sharing for late travel', desc: 'Can be scheduled or activated during commute and evening hours for family peace of mind.' },
     ],
   },
-  adult: {
-    id: 'adult',
-    name: 'VoltKart Adult',
-    tag: 'Working Professionals',
-    headline: 'A clean, powerful phone for people who want control.',
-    color: '#2ed573',
-    launcherMock: {
-      bg: 'linear-gradient(135deg, #e8f9ef 0%, #dbf5e4 100%)',
-      clockColor: '#0e4a23',
-      apps: [
-        { Icon: Briefcase, name: 'Work Profile' },
-        { Icon: Lock, name: 'Secure Folder' },
-        { Icon: Shield, name: 'Privacy Center' },
-        { Icon: Mail, name: 'Email' },
-        { Icon: Globe, name: 'Brave/Vanadium' },
-        { Icon: Settings, name: 'Settings' },
-      ],
-      notice: 'Full freedom · Segregated profiles · Network tracker blocker',
-    },
-    features: [
-      { title: '100% Full app freedom', desc: 'Install any application from trusted open repositories or Sandboxed Google Play with zero OS restrictions.' },
-      { title: 'Maximum privacy in one screen', desc: 'A single, unified privacy console controlling all sensors, cameras, and data permissions.' },
-      { title: 'Per-app one-time permissions', desc: 'Grant camera, mic, or location access for single sessions only; permissions revoke automatically.' },
-      { title: 'Network-level tracker blocking', desc: 'Built-in DNS-over-HTTPS and tracker blocker halts ad networks before packets reach the screen.' },
-      { title: 'Segregated Work & Personal profiles', desc: 'Keep corporate documents, Slack, and work email completely isolated from personal photos.' },
-      { title: 'Encrypted Secure Folder', desc: 'Hardware-encrypted vault isolated by the Titan M2 security module for private documents.' },
-      { title: 'Remote lock & cryptographic wipe', desc: 'Protect your identity and data even if your phone is lost or stolen.' },
-    ],
-  },
-  senior: {
-    id: 'senior',
-    name: 'VoltKart Senior',
-    tag: 'Parents & Grandparents',
-    headline: 'Simple, large, and calm. Built for parents and grandparents.',
-    color: '#ffa502',
-    launcherMock: {
-      bg: 'linear-gradient(135deg, #fff7eb 0%, #feeeda 100%)',
-      clockColor: '#633900',
-      apps: [
-        { Icon: Phone, name: 'CALL' },
-        { Icon: Video, name: 'VIDEO CALL' },
-        { Icon: Image, name: 'PHOTOS' },
-        { Icon: MessageSquare, name: 'MESSAGES' },
-        { Icon: HeartPulse, name: 'MEDICINE' },
-        { Icon: AlertOctagon, name: 'EMERGENCY SOS' },
-      ],
-      notice: 'Large high-contrast tiles · Anti-scam warnings · 1-tap family video',
-    },
-    features: [
-      { title: 'Large text & high-contrast tiles', desc: 'Oversized buttons and high-contrast typography designed specifically for effortless legibility.' },
-      { title: '1-tap family video calls', desc: 'Call children and grandchildren with a single touch, with zero confusing menus or app switching.' },
-      { title: 'Dedicated SOS Emergency button', desc: 'Prominent red button immediately dials designated family members and texts current GPS coordinates.' },
-      { title: 'Active anti-scam warnings', desc: 'Identifies and visibly warns against suspicious incoming numbers and fraudulent spam text messages.' },
-      { title: 'Medicine & appointment voice reminders', desc: 'Gentle, spoken reminders to take daily prescriptions and attend scheduled appointments.' },
-      { title: 'Remote family helper support', desc: 'Trusted family members can assist with settings and resolve issues remotely with permission.' },
-    ],
-  },
 };
 
 const EditionsPage = () => {
@@ -139,7 +82,7 @@ const EditionsPage = () => {
       {/* Hero */}
       <section style={{ padding: '5.5rem 0 4rem', background: 'var(--avrel-bg)', borderBottom: '1px solid var(--avrel-border)' }}>
         <div className="container" style={{ textAlign: 'center', maxWidth: '820px' }}>
-          <span className="avrel-eyebrow">ONE OPERATING SYSTEM · FOUR EDITIONS</span>
+          <span className="avrel-eyebrow">ONE OPERATING SYSTEM · TWO EDITIONS</span>
           <h1 className="avrel-section-title" style={{ fontSize: 'clamp(2.8rem, 5.5vw, 4.4rem)', lineHeight: 1.05 }}>
             The right software matters more than the logo on the back.
           </h1>
@@ -318,28 +261,24 @@ const EditionsPage = () => {
                   <th style={{ padding: '1.25rem 1.5rem', fontFamily: 'DM Mono', fontSize: '0.75rem', color: 'var(--avrel-text-stone)' }}>FEATURE</th>
                   <th style={{ padding: '1.25rem 1.5rem', fontFamily: 'Inter', fontSize: '0.95rem', fontWeight: 800 }}>Kids (5–12)</th>
                   <th style={{ padding: '1.25rem 1.5rem', fontFamily: 'Inter', fontSize: '0.95rem', fontWeight: 800 }}>Teen (13–17)</th>
-                  <th style={{ padding: '1.25rem 1.5rem', fontFamily: 'Inter', fontSize: '0.95rem', fontWeight: 800 }}>Adult</th>
-                  <th style={{ padding: '1.25rem 1.5rem', fontFamily: 'Inter', fontSize: '0.95rem', fontWeight: 800 }}>Senior</th>
                 </tr>
               </thead>
               <tbody style={{ fontSize: '0.88rem' }}>
                 {[
-                  { f: 'Home screen', k: 'Playful, big icons', t: 'Standard sleek', a: 'Fully custom', s: 'Large, simple tiles' },
-                  { f: 'App installs', k: 'Parent approves each', t: 'Parent approval request', a: '100% Free', s: 'Family helper assisted' },
-                  { f: 'Screen-time limits', k: 'Strict daily & bedtime', t: 'Shared rules & focus', a: 'Optional', s: 'Optional' },
-                  { f: 'Content filter', k: 'Strict child-safe', t: 'Age-based filter', a: 'Optional', s: 'Scam & spam warnings' },
-                  { f: 'Calls & messages', k: 'Whitelisted only', t: 'Standard with limits', a: 'Unrestricted', s: '1-tap family video calls' },
-                  { f: 'Location sharing', k: 'With parent', t: 'With parent', a: 'Optional', s: 'With family' },
-                  { f: 'Guardian dashboard', k: 'Yes, full control', t: 'Yes, shared rules', a: 'No (Private)', s: 'Optional family helper' },
-                  { f: 'Emergency SOS button', k: 'Yes, sends GPS', t: 'Yes, sends GPS', a: 'Optional', s: 'Yes, dedicated red button' },
-                  { f: 'Privacy & tracker block', k: '100% Zero telemetry', t: '100% Zero telemetry', a: '100% Zero telemetry', s: '100% Zero telemetry' },
+                  { f: 'Home screen', k: 'Playful, big icons', t: 'Standard sleek' },
+                  { f: 'App installs', k: 'Parent approves each', t: 'Parent approval request' },
+                  { f: 'Screen-time limits', k: 'Strict daily & bedtime', t: 'Shared rules & focus' },
+                  { f: 'Content filter', k: 'Strict child-safe', t: 'Age-based filter' },
+                  { f: 'Calls & messages', k: 'Whitelisted only', t: 'Standard with limits' },
+                  { f: 'Location sharing', k: 'With parent', t: 'With parent' },
+                  { f: 'Guardian dashboard', k: 'Yes, full control', t: 'Yes, shared rules' },
+                  { f: 'Emergency SOS button', k: 'Yes, sends GPS', t: 'Yes, sends GPS' },
+                  { f: 'Privacy & tracker block', k: '100% Zero telemetry', t: '100% Zero telemetry' },
                 ].map((row, i) => (
                   <tr key={row.f} style={{ borderBottom: i < 8 ? '1px solid var(--avrel-border)' : 'none' }}>
                     <td style={{ padding: '1.1rem 1.5rem', fontWeight: 700, color: 'var(--avrel-text)' }}>{row.f}</td>
                     <td style={{ padding: '1.1rem 1.5rem', color: 'var(--avrel-text-muted)' }}>{row.k}</td>
                     <td style={{ padding: '1.1rem 1.5rem', color: 'var(--avrel-text-muted)' }}>{row.t}</td>
-                    <td style={{ padding: '1.1rem 1.5rem', color: 'var(--avrel-text-muted)' }}>{row.a}</td>
-                    <td style={{ padding: '1.1rem 1.5rem', color: 'var(--avrel-text-muted)' }}>{row.s}</td>
                   </tr>
                 ))}
               </tbody>

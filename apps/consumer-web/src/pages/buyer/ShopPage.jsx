@@ -97,8 +97,6 @@ const ShopPage = () => {
               { id: '', label: 'All Editions' },
               { id: 'Kids', label: 'VoltKart Kids (5–12)' },
               { id: 'Teen', label: 'VoltKart Teen (13–17)' },
-              { id: 'Adult', label: 'VoltKart Adult' },
-              { id: 'Senior', label: 'VoltKart Senior' },
             ].map(ed => {
               const isActive = filters.edition === ed.id;
               return (
@@ -313,7 +311,7 @@ const ShopPage = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          addToCart(device, filters.edition ? `VoltKart ${filters.edition}` : 'VoltKart Adult');
+                          addToCart(device, filters.edition ? `VoltKart ${filters.edition}` : 'VoltKart Kids');
                         }}
                       >
                         <ShoppingCart size={13} />
@@ -357,7 +355,7 @@ const ShopPage = () => {
 
                       {/* Edition compatibility note */}
                       <div style={{ fontSize: '0.72rem', color: 'var(--avrel-text-stone)', margin: '0.3rem 0 0.75rem', fontFamily: 'DM Mono' }}>
-                        Available in: Kids · Teen · Adult · Senior
+                        Available in: Kids · Teen
                       </div>
 
                       {/* Price Row */}

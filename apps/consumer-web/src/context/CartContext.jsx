@@ -41,7 +41,7 @@ export const CartProvider = ({ children }) => {
     }
   }, [wishlist]);
 
-  const addToCart = (device, chosenEdition = 'VoltKart Adult') => {
+  const addToCart = (device, chosenEdition = 'VoltKart Kids') => {
     const cartId = `${device._id || device.id}_${chosenEdition}`;
     setCart(prev => {
       const existing = prev.find(item => item.cartId === cartId);
@@ -105,7 +105,7 @@ export const CartProvider = ({ children }) => {
     return wishlist.some(item => (item._id || item.id) === deviceId);
   };
 
-  const moveToCart = (device, edition = 'VoltKart Adult') => {
+  const moveToCart = (device, edition = 'VoltKart Kids') => {
     addToCart(device, edition);
     const devId = device._id || device.id;
     setWishlist(prev => prev.filter(item => (item._id || item.id) !== devId));

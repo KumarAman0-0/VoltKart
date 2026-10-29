@@ -74,7 +74,7 @@ const HowItWorksPage = () => {
                 {
                   step: '01',
                   title: 'Choose who it is for',
-                  detail: 'Kids, Teen, Adult or Senior.',
+                  detail: 'Kids or Teen.',
                   desc: 'Every edition has its own custom launcher, strict policy layer, and privacy setup tailored to the person who will use it. No clunky third-party parental apps required.',
                 },
                 {

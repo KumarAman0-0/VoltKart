@@ -139,7 +139,7 @@ const CartDrawer = () => {
                     {/* Chosen OS Edition Pill */}
                     <div className="avrel-cart-edition-tag">
                       <span className="edition-dot" />
-                      <span>{item.chosenEdition || 'VoltKart Adult'}</span>
+                      <span>{item.chosenEdition || 'VoltKart Kids'}</span>
                     </div>
 
                     <div className="avrel-cart-item-bottom">

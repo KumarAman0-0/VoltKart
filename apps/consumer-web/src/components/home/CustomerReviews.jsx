@@ -15,14 +15,14 @@ const REVIEWS = [
   },
   {
     id: 2,
-    name: 'Rahul Mukherjee',
-    city: 'Hyderabad',
-    role: 'Principal Security Engineer',
-    edition: 'VoltKart Adult',
-    editionColor: '#2ed573',
+    name: 'Rajesh Nair',
+    city: 'Kochi',
+    role: 'Parent of 14-year-old Diya',
+    edition: 'VoltKart Teen',
+    editionColor: '#6c63ff',
     rating: 5,
     device: 'Pixel 7 · 128GB (Grade A+)',
-    review: 'Radical data minimization at its best. Zero telemetry beacons sent to Google, sandboxed permissions, and clean hardware root verified with Titan M2. The device arrived looking brand new with 94% battery capacity.',
+    review: 'The shared guardian dashboard allows Diya and me to agree on app limits together. She gets the freedom to chat and listen to podcasts, while study focus automatically silences social notifications during school hours.',
   },
   {
     id: 3,
@@ -37,25 +37,14 @@ const REVIEWS = [
   },
   {
     id: 4,
-    name: 'Col. O.P. Sharma (Retd.)',
-    city: 'Chandigarh',
-    role: 'Grandparent',
-    edition: 'VoltKart Senior',
-    editionColor: '#ffa502',
+    name: 'Sneha Rao',
+    city: 'Chennai',
+    role: 'Mother of 10-year-old Kabir',
+    edition: 'VoltKart Kids',
+    editionColor: '#00d4aa',
     rating: 5,
     device: 'Pixel 7a · 128GB (Grade A+)',
-    review: 'Large high-contrast tiles and one-tap video calling to my daughter. No pop-ups, no spam notifications, and the dedicated red SOS button with GPS sharing gives my family total reassurance.',
-  },
-  {
-    id: 5,
-    name: 'Dr. Vikram Patel',
-    city: 'Ahmedabad',
-    role: 'Cardiologist',
-    edition: 'VoltKart Adult',
-    editionColor: '#2ed573',
-    rating: 5,
-    device: 'Pixel 8 · 128GB (Grade A+)',
-    review: 'The segregated Work and Personal profile keeps hospital records and patient chats strictly isolated. The 6-month warranty and NIST 800-88 storage wipe certificate gave me the confidence to buy refurbished.',
+    review: 'The web browsing filter is unbeatable. No adult content slips through, whitelist calling ensures only family can reach him, and the GPS beacon gives us immense relief when he travels to football practice.',
   },
 ];
 
@@ -80,7 +69,7 @@ const CustomerReviews = () => {
               Our Happy Customers.
             </h2>
             <p className="avrel-section-desc" style={{ margin: 0 }}>
-              Hear how parents, professionals, students, and seniors use their tailored VoltKart OS editions every day.
+              Hear how parents, guardians, and students use their tailored VoltKart OS editions every day.
             </p>
           </div>
 

@@ -47,38 +47,6 @@ const EDITIONS = [
     color: '#6c63ff',
     shopQuery: '?edition=Teen',
   },
-  {
-    id: 'adult',
-    name: 'VoltKart Adult',
-    age: 'Working Professionals',
-    Icon: Briefcase,
-    pitch: 'A clean, powerful phone for people who want control.',
-    features: [
-      'Full app freedom & maximum privacy',
-      'Per-app one-time permission controls',
-      'Segregated Work & Personal profiles',
-      'Secure folder for sensitive documents',
-      'Network-level tracker & ad blocking',
-    ],
-    color: '#2ed573',
-    shopQuery: '?edition=Adult',
-  },
-  {
-    id: 'senior',
-    name: 'VoltKart Senior',
-    age: 'Parents & Grandparents',
-    Icon: Heart,
-    pitch: 'Simple, large, and calm. Built for parents and grandparents.',
-    features: [
-      'Large text & clear high-contrast tiles',
-      '1-tap family video calls',
-      'Dedicated SOS Emergency button with GPS',
-      'Anti-scam warnings for suspicious calls',
-      'Remote family helper setup support',
-    ],
-    color: '#ffa502',
-    shopQuery: '?edition=Senior',
-  },
 ];
 
 const HomePage = () => {
@@ -107,7 +75,7 @@ const HomePage = () => {
               </h1>
 
               <p className="avrel-hero-desc">
-                We give good phones a second life with an operating system made for who will use it: a child, a teenager, an adult or a grandparent.
+                We give good phones a second life with an operating system made for who will use it: a child or a teenager.
               </p>
 
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -150,7 +118,7 @@ const HomePage = () => {
             <span className="avrel-eyebrow">Targeted Operating System</span>
             <h2 className="avrel-section-title">Who is it for?</h2>
             <p className="avrel-section-desc">
-              A child, a teenager, an adult and a grandparent do not need the same phone. Choose the edition that matches who will use the device.
+              A child and a teenager do not need the same phone. Choose the edition that matches who will use the device.
             </p>
           </div>
 
@@ -299,7 +267,7 @@ const HomePage = () => {
           {activeStepTab === 'buyers' ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem' }}>
               {[
-                { step: '01', title: 'Choose who it is for', desc: 'Pick Kids, Teen, Adult or Senior based on who will hold the device.' },
+                { step: '01', title: 'Choose who it is for', desc: 'Pick Kids or Teen based on who will hold the device.' },
                 { step: '02', title: 'Choose your device', desc: 'Browse verified phones & tablets by brand, storage, grade and price.' },
                 { step: '03', title: 'Order securely', desc: 'Pay online with free insured doorstep delivery.' },
                 { step: '04', title: 'We prepare it', desc: 'Our engineers flash the matching OS edition and test all hardware.' },

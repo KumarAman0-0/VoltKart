@@ -28,22 +28,6 @@ const EDITIONS_OPTIONS = [
     summary: 'Transparent guardrails, study focus mode, shared wellbeing reports, app install approval workflow.',
     color: '#6c63ff',
   },
-  {
-    id: 'Adult',
-    name: 'VoltKart Adult',
-    age: 'General / Work',
-    Icon: Briefcase,
-    summary: 'Full app freedom, work and personal profiles, one-time permissions, network-level tracker blocking.',
-    color: '#2ed573',
-  },
-  {
-    id: 'Senior',
-    name: 'VoltKart Senior',
-    age: 'Parents & Grandparents',
-    Icon: Glasses,
-    summary: 'Oversized high-contrast tiles, 1-tap family video call, dedicated SOS emergency button with GPS.',
-    color: '#ffa502',
-  },
 ];
 
 const GRADE_INFO = {
@@ -61,7 +45,7 @@ const DeviceDetailPage = () => {
   const [device, setDevice] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
-  const [chosenEdition, setChosenEdition] = useState('Adult');
+  const [chosenEdition, setChosenEdition] = useState('Kids');
 
   // Checkout modal
   const [showCheckout, setShowCheckout] = useState(false);
