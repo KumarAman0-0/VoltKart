@@ -1,0 +1,43 @@
+# Dependencies & symlinks
+node_modules
+**/node_modules
+apps/*/node_modules
+
+# Environment Secrets
+.env
+.env.*
+server/.env
+client/.env
+!.env.example
+!server/.env.example
+
+# Production Build Artifacts
+dist
+dist-ssr
+build
+**/dist
+apps/*/dist
+client/dist
+
+# Local User Uploads & Media
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Logs & Debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS & Editor temporary files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Excluded documentation & legacy client
+*.pdf
+Phone breakdown_ scroll to take it apart.md
+client/

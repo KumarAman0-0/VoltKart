@@ -1,0 +1,28 @@
+{
+  "name": "voltkart",
+  "version": "2.0.0",
+  "description": "VoltKart — Privacy-OS Refurbished Marketplace Ecosystem",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CONSUMER,AGENT,DIAGNOSTIC,WAREHOUSE,ADMIN\" -c \"blue,green,magenta,yellow,cyan,red\" \"npm run dev:server\" \"npm run dev:consumer\" \"npm run dev:agent\" \"npm run dev:diagnostic\" \"npm run dev:warehouse\" \"npm run dev:admin\"",
+    "start": "npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "dev:consumer": "cd apps/consumer-web && npm run dev",
+    "dev:agent": "cd apps/agent-mobile-app && npm run dev",
+    "dev:diagnostic": "cd apps/diagnostic-pwa && npm run dev",
+    "dev:warehouse": "cd apps/warehouse-portal && npm run dev",
+    "dev:admin": "cd apps/admin-portal && npm run dev",
+    "build:consumer": "cd apps/consumer-web && npm run build",
+    "build:agent": "cd apps/agent-mobile-app && npm run build",
+    "build:diagnostic": "cd apps/diagnostic-pwa && npm run build",
+    "build:warehouse": "cd apps/warehouse-portal && npm run build",
+    "build:admin": "cd apps/admin-portal && npm run build",
+    "build:all": "npm run build:consumer && npm run build:agent && npm run build:diagnostic && npm run build:warehouse && npm run build:admin",
+    "dev:legacy": "cd client && npm run dev",
+    "seed": "cd server && npm run seed",
+    "install:all": "cd server && npm install && cd ../apps/consumer-web && npm install && cd ../agent-mobile-app && npm install && cd ../diagnostic-pwa && npm install && cd ../warehouse-portal && npm install && cd ../admin-portal && npm install && cd ../.. && npm install"
+  },
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

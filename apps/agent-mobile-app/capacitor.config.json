@@ -1,0 +1,18 @@
+{
+  "appId": "in.voltkart.agent",
+  "appName": "VoltKart Agent",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "http://localhost:5174",
+    "cleartext": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0a0a0f",
+      "showSpinner": true,
+      "spinnerColor": "#00d4aa"
+    }
+  }
+}
