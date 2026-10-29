@@ -9,7 +9,7 @@ const connectDB = require('../config/db');
 const seed = async () => {
   try {
     await connectDB();
-    console.log('✅ Connected to MongoDB via connectDB');
+    console.log('Connected to Database via connectDB');
 
     // Clear existing seed users (not all users)
     await User.deleteMany({
@@ -22,7 +22,7 @@ const seed = async () => {
         ],
       },
     });
-    console.log('🗑️  Cleared old seed users');
+    console.log('Cleared old seed users');
 
     const users = [
       {
@@ -74,7 +74,7 @@ const seed = async () => {
       const user = new User(u);
       await user.save(); // triggers bcrypt pre-save
       created.push(user);
-      console.log(`✅ Created ${u.role}: ${u.email}`);
+      console.log(`Created ${u.role}: ${u.email}`);
 
       if (u.role === 'seller') {
         await SellerProfile.create({
@@ -87,7 +87,7 @@ const seed = async () => {
       }
     }
 
-    console.log('\n🎉 Seed complete!\n');
+    console.log('\nSeed complete!\n');
     console.log('='.repeat(50));
     console.log('Test Credentials:');
     console.log('='.repeat(50));
@@ -98,7 +98,7 @@ const seed = async () => {
 
     process.exit(0);
   } catch (err) {
-    console.error('❌ Seed error:', err.message);
+    console.error('Seed error:', err.message);
     process.exit(1);
   }
 };

@@ -71,7 +71,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Health check
 app.get('/health', (req, res) => {
-  res.json({ success: true, message: 'VoltKart API is running 🚀', timestamp: new Date() });
+  res.json({ success: true, message: 'VoltKart API is running', timestamp: new Date() });
 });
 
 // Routes
@@ -95,7 +95,7 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, () => {
-  console.log(`🚀 VoltKart server & Socket.io running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+  console.log(`VoltKart server & Socket.io running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
 });
 
 module.exports = { app, httpServer };
